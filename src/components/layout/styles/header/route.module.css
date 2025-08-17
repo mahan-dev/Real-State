@@ -1,0 +1,9 @@
+
+.header {
+    @apply flex justify-between items-center text-white bg-orange-500 rounded-md px-3 py-3;
+}
+
+.header__login {
+    @apply transition-all duration-200 ease-linear bg-white cursor-pointer items-center rounded-md px-2  text-orange-500 flex gap-2;
+    @apply hover:bg-opacity-50 hover:text-white
+}

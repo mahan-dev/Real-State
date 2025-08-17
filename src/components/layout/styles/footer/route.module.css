@@ -1,0 +1,5 @@
+.footer {
+
+    @apply flex justify-between items-center text-white bg-orange-500 rounded-md px-3 py-3;
+
+}
