@@ -27,10 +27,10 @@
       "@/modules/*": ["src/components/modules/*"],
       "@/models/*": ["src/models/*"],
       "@/elements/*": ["src/components/elements/*"],
-      "@/api/*": ["src/api/*"],
+      "@/api/*": ["src/app/api/*"],
       "@/utils/*": ["src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js", "src/utils/auth.ts", "src/models/User.ts"],
   "exclude": ["node_modules"]
 }
