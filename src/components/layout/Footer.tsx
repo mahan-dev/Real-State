@@ -5,7 +5,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className="w-[700px]">
+      <div className="w-[700px] max-lg:ml-4 max-lg:w-full">
         <span className="font-bold">سامانه خرید و اجاره ملک</span>
 
         <p className="font-light text-justify mt-2">
@@ -15,21 +15,23 @@ const Footer = () => {
         </p>
       </div>
 
-      <ul className="font-light list-disc">
-        <li>
-          <Link href={""}>تعرفه قانونی</Link>
-        </li>
+      <div className="mr-auto max-lg:mr-[0] max-lg:w-full">
+        <ul className={styles.footer__list}>
+          <li>
+            <Link href={""}>تعرفه قانونی</Link>
+          </li>
 
-        <li>
-          <Link href={""}> دسترسی سریع </Link>
-        </li>
-        <li>
-          <Link href={""}> مشاورین خبره </Link>
-        </li>
-        <li>
-          <Link href={""}> قولنامه محضری </Link>
-        </li>
-      </ul>
+          <li>
+            <Link href={""}> دسترسی سریع </Link>
+          </li>
+          <li>
+            <Link href={""}> مشاورین خبره </Link>
+          </li>
+          <li>
+            <Link href={""}> قولنامه محضری </Link>
+          </li>
+        </ul>
+      </div>
     </footer>
   );
 };

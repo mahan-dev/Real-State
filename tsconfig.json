@@ -28,7 +28,8 @@
       "@/models/*": ["src/models/*"],
       "@/elements/*": ["src/components/elements/*"],
       "@/api/*": ["src/app/api/*"],
-      "@/utils/*": ["src/utils/*"]
+      "@/utils/*": ["src/utils/*"],
+      "@/helper/*": ["src/helper/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js", "src/utils/auth.ts", "src/models/User.ts"],

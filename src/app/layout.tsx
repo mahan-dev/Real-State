@@ -4,19 +4,22 @@ import "@/app/globals.css";
 import { myFont } from "@/utils/fonts";
 import Layout from "@/components/layout/Layout";
 import React, { PropsWithChildren } from "react";
+import Providers from "@/providers/Providers";
 
 export const metadata: Metadata = {
   title: "Real-State",
   description: "Sell buildings",
 };
 
-type LayoutProps = Readonly<PropsWithChildren>
+type LayoutProps = Readonly<PropsWithChildren>;
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="fa" dir="rtl">
       <body className={myFont.className}>
         <section className="max-w-[1200px] mx-auto  py-5 max-xl:px-3">
-          <Layout>{children}</Layout>
+          <Providers>
+            <Layout>{children}</Layout>
+          </Providers>
         </section>
       </body>
     </html>

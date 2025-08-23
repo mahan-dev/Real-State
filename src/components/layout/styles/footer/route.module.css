@@ -1,5 +1,12 @@
 .footer {
 
-    @apply flex justify-between items-center text-white bg-orange-500 rounded-md px-3 py-3;
+    @apply flex flex-wrap items-center text-white bg-orange-500 rounded-md px-3 py-3;
 
+}
+
+.footer__list {
+    @apply font-light   list-disc max-lg:flex max-lg:flex-wrap max-lg:gap-4 max-lg:mt-6 max-lg:w-full max-lg:justify-around max-sm:justify-around;
+    & li {
+        @apply mr-3;
+    }
 }

@@ -9,6 +9,8 @@
 .container__form {
     @apply flex flex-col w-[350px] mt-5 py-6 px-12 border-2 border-orange-400 rounded-md;
 
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+    
 }
 
 .container__form>label {
@@ -17,10 +19,11 @@
 
 .container__form>input {
     @apply text-gray-500 transition-all ease-linear duration-200 mb-8 mt-1 px-2 py-1 border-2 border-dashed rounded-md outline-none;
-}
 
-.container__form>input:focus {
-    @apply border-orange-500
+    &:focus {
+        @apply border-orange-500;
+    }
+    
 }
 
 
@@ -34,7 +37,12 @@
 
 .form__footer {
     @apply flex items-center gap-2 mt-4 text-gray-500;
-    & > a {
-        @apply text-orange-500 border-b-2 border-orange-500;
+
+    &>a {
+        @apply transition-all duration-200 ease-out text-orange-500 border-b-2 border-orange-500;
+    }
+
+    &>a:hover {
+        @apply opacity-60
     }
 }
