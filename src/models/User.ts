@@ -18,7 +18,6 @@ export const userSchema = new Schema<UserInterface>({
     type: String,
     required: true,
     trim: true,
-    minLength: 4,
   },
   createdAt: {
     type: Date,
@@ -32,5 +31,5 @@ export const userSchema = new Schema<UserInterface>({
 });
 
 const User: Model<UserInterface> =
-  models.RealDb || model<UserInterface>("RealDb", userSchema);
+  models.RealStateDb || model<UserInterface>("RealStateDb", userSchema);
 export default User;

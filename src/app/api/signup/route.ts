@@ -26,6 +26,16 @@ export const POST = async (req: Request) => {
           status: 422,
         }
       );
+    if (password.length < 5)
+      return NextResponse.json(
+        {
+          status: "Failed",
+          error: "پسورد کوتاه است",
+        },
+        {
+          status: 400,
+        }
+      );
 
     const hashPassword = await hashedPassword(password);
 

@@ -17,12 +17,19 @@ const SignupPage = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-
+  const router = useRouter();
   const submitHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const { email, password, rePassword } = form;
-     await SignupValidation({ form, setForm, email, password, rePassword,setIsLoading });
-
+    const res = await SignupValidation({
+      form,
+      setForm,
+      email,
+      password,
+      rePassword,
+      setIsLoading,
+    });
+    if (res) router.push("/signin");
   };
 
   return (

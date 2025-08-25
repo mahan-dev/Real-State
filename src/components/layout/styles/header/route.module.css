@@ -7,3 +7,10 @@
     @apply transition-all duration-200 ease-linear bg-white cursor-pointer items-center rounded-md px-2  text-orange-500 flex gap-2;
     @apply hover:bg-opacity-50 hover:text-white
 }
+
+.header__dashboard {
+    @apply inline text-[30px] cursor-pointer  rounded-lg transition-all duration-150 ease-linear;
+    &:hover {
+        @apply bg-white text-orange-500
+    }
+}

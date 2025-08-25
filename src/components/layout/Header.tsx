@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import styles from "@/components/layout/styles/header/route.module.css";
 import { useSession } from "next-auth/react";
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   const { data } = useSession();
@@ -13,7 +14,7 @@ const Header = () => {
     <header className={styles.header}>
       <ul className="flex gap-4">
         <li>
-          <Link href={"homePage"}>صفحه اصلی</Link>
+          <Link href={"/"}>صفحه اصلی</Link>
         </li>
         <li>
           <Link href={"agahi"}>آگهی ها</Link>
@@ -26,7 +27,9 @@ const Header = () => {
           ورود
         </Link>
       ) : (
-        <p>dashboard</p>
+        <Link href={"/dashboard"}>
+          <CgProfile className={styles.header__dashboard} />
+        </Link>
       )}
     </header>
   );

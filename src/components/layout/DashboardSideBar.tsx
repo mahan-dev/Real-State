@@ -1,0 +1,42 @@
+import React from "react";
+import styles from "@/components/layout/styles/dashboard-sidebar/route.module.css";
+
+import { CgProfile } from "react-icons/cg";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Link from "next/link";
+import LogOutButton from "../modules/LogOutButton";
+
+const DashboardSideBar = async ({ children }) => {
+  const session = await getServerSession(authOptions);
+  const email = session?.user.email;
+
+  return (
+    <section className={styles.container}>
+      <div className={styles.sidebar}>
+        <div className={styles.sidebar__header}>
+          <CgProfile />
+          <p className="break-all">{email ? email : "nothing found"}</p>
+        </div>
+
+        <div className={styles.sidebar__main}>
+          <ul>
+            <li>
+              <Link href={""}>حساب کاربری</Link>
+            </li>
+            <li>
+              <Link href={""}>آگهی های من</Link>
+            </li>
+            <li>
+              <Link href={""}>ثبت آگهی</Link>
+            </li>
+          </ul>
+        </div>
+        <LogOutButton />
+      </div>
+      <div className="main"> {children}</div>
+    </section>
+  );
+};
+
+export default DashboardSideBar;

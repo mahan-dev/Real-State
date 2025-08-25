@@ -1,12 +1,11 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "@/templates/styles/signupPage/styles.module.css";
 import Form from "@/modules/Form";
 import FormData from "@/templates/interface/Interface";
 import signinValidation from "@/helper/signinPage/SigninHandler";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 const SigninPage = () => {
   const [form, setForm] = useState<FormData>({
@@ -15,7 +14,7 @@ const SigninPage = () => {
   });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const session = useSession();
+
 
   const router = useRouter();
   const submitHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,16 +23,10 @@ const SigninPage = () => {
 
     // setIsLoading(true);
     const res = await signinValidation({ email, password, setIsLoading })
-    if (res) router.push("/");
+    if (res) router.push("/dashboard");
   };
 
-  const userValidation = () => {
-    if (session.status === "authenticated") router.push("/");
-  };
 
-  useEffect(() => {
-    userValidation();
-  }, []);
 
   return (
     <section className={styles.container}>
