@@ -7,7 +7,7 @@ interface DashboardProps {
 
 const DashboardPage = ({createdAt}:DashboardProps) => {
 
-    const stringifyDate = new Date(createdAt).toLocaleDateString("fa-IR")
+    const stringifyDate = new Date(createdAt).toLocaleDateString("fa-IR");
 
     return (
         <section>
