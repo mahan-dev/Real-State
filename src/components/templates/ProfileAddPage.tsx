@@ -3,18 +3,8 @@ import { useForm } from "react-hook-form";
 import TextInput from "@/modules/TextInput";
 import styles from "@/templates/styles/profileAddPage/route.module.css";
 
-export interface FormValues {
-  title: string;
-  description: string;
-  location: string;
-  phone: string;
-  price: string;
-  realState: string;
-  constructionDate: Date;
-  category: string;
-  rules: string[];
-  amenities: string[];
-}
+import { FormValues } from "@/templates/interface/Interface";
+import RadioButton from "../modules/RadioButton";
 
 const ProfileAddPage = () => {
   const { handleSubmit, watch, setValue } = useForm<FormValues>({
@@ -34,48 +24,67 @@ const ProfileAddPage = () => {
 
   const profileData = watch();
   console.log(profileData);
-  const submitHandler = (data: FormValues) => {
-    console.log(data);
-  };
+
+  const inputProps = [
+    {
+      title: "عنوان آگهی",
+      name: "title",
+      profileData: profileData,
+      setValue: setValue,
+    },
+    {
+      title: "توضیحات",
+      name: "description",
+      profileData: profileData,
+      setValue: setValue,
+      textarea: true,
+    },
+    {
+      title: "آدرس",
+      name: "location",
+      profileData: profileData,
+      setValue: setValue,
+    },
+    {
+      title: "شماره تماس",
+      name: "phone",
+      profileData: profileData,
+      setValue: setValue,
+    },
+    {
+      title: "قیمت (تومان)",
+      name: "price",
+      profileData: profileData,
+      setValue: setValue,
+    },
+  ];
+
+  const submitHandler = (data: FormValues) => {};
 
   return (
     <section>
       <h2 className={styles.title}>ثبت آگهی</h2>
 
       <form onSubmit={handleSubmit(submitHandler)}>
-        <TextInput
-          title="عنوان آگهی"
-          name="title"
-          profileData={profileData}
-          setValue={setValue}
-        />
-        <TextInput
-          title="توضیحات"
-          name="price"
-          profileData={profileData}
-          setValue={setValue}
-          textarea={true}
-        />
+        {inputProps.map((item) => (
+          <TextInput
+            key={item.name}
+            profileData={item.profileData}
+            title={item.title}
+            name={item.name}
+            setValue={item.setValue}
+            textarea={false}
+          />
+        ))}
 
-        <TextInput
-          title="آدرس"
-          name="description"
-          profileData={profileData}
-          setValue={setValue}
-        />
-        <TextInput
-          title=" شماره تماس"
-          name="phone"
-          profileData={profileData}
-          setValue={setValue}
-        />
-        <TextInput
-          title="قیمت (تومان)"
-          name="price"
-          profileData={profileData}
-          setValue={setValue}
-        />
-        <button className="w-full text-white bg-orange-500 mt-6 rounded-md py-1 transition-all duration-200 hover:bg-opacity-70" type="submit">ذخیره</button>
+        <RadioButton profileData={profileData} setProfileData={setValue} />
+
+        <button
+          className="w-full text-white bg-orange-500 mt-6 rounded-md py-1 transition-all duration-200 hover:bg-opacity-70"
+          type="submit"
+        >
+          ذخیره
+        </button>
       </form>
     </section>
   );

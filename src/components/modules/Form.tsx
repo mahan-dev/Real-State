@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/templates/styles/signupPage/styles.module.css";
-import FormData from "@/templates/interface/Interface";
+import { FormData } from "@/templates/interface/Interface";
 import { ThreeDots } from "react-loader-spinner";
 import { getServerSession } from "next-auth";
 
@@ -25,9 +25,6 @@ const Form = ({
   rePassword,
   isLoading,
 }: FormInputProps) => {
-
-
-
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({
@@ -46,7 +43,6 @@ const Form = ({
           type="text"
           value={form.email}
           placeholder="ایمیل"
-          
           onChange={changeHandler}
         />
 

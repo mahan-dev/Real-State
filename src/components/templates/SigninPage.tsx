@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import styles from "@/templates/styles/signupPage/styles.module.css";
 import Form from "@/modules/Form";
-import FormData from "@/templates/interface/Interface";
+import { FormData } from "@/templates/interface/Interface";
 import signinValidation from "@/helper/signinPage/SigninHandler";
 import { useRouter } from "next/navigation";
 
@@ -15,18 +15,13 @@ const SigninPage = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-
   const router = useRouter();
   const submitHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const { email, password } = form;
-
-    // setIsLoading(true);
-    const res = await signinValidation({ email, password, setIsLoading })
+    const res = await signinValidation({ email, password, setIsLoading });
     if (res) router.push("/dashboard");
   };
-
-
 
   return (
     <section className={styles.container}>

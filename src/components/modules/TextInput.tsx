@@ -1,12 +1,13 @@
 import React from "react";
-import { FormValues } from "@/templates/ProfileAddPage";
+import { FormValues } from "@/templates/interface/Interface";
 import { UseFormSetValue } from "react-hook-form";
 import styles from "@/modules/styles/textInput/route.module.css";
+import { p2e } from "@/utils/replaceNumber";
 
 interface textType {
   title: string;
-  name: keyof FormValues;
-  profileData: object;
+  name: string;
+  profileData: FormValues;
   textarea?: boolean;
   setValue: UseFormSetValue<FormValues>;
 }
@@ -21,7 +22,7 @@ const TextInput = ({
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setValue(name as keyof FormValues, value);
+    setValue(name as keyof FormValues, p2e(value));
   };
 
   return (
@@ -30,7 +31,7 @@ const TextInput = ({
 
       {textarea ? (
         <textarea className={styles.container__textarea} />
-      ): (
+      ) : (
         <input
           type="text"
           className={styles.container__input}
@@ -44,4 +45,3 @@ const TextInput = ({
 };
 
 export default TextInput;
- 

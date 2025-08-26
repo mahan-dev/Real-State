@@ -1,0 +1,19 @@
+
+.container {
+    @apply mt-6 flex;
+
+    
+    & .main {
+        @apply flex
+    }
+}
+
+.main > div {
+    @apply flex cursor-pointer bg-orange-500 bg-opacity-30 rounded-md px-2 py-1  ml-4 last:ml-0;    
+    & label {
+        @apply cursor-pointer pl-3;
+    }
+    & input {
+        @apply accent-orange-500 
+    }
+}
