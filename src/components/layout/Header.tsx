@@ -1,15 +1,13 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import styles from "@/components/layout/styles/header/route.module.css";
 import { useSession } from "next-auth/react";
 import { CgProfile } from "react-icons/cg";
-
 const Header = () => {
   const { data } = useSession();
 
-  useEffect(() => {}, []);
   return (
     <header className={styles.header}>
       <ul className="flex gap-4">

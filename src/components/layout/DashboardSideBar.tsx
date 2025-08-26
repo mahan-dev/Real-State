@@ -22,19 +22,19 @@ const DashboardSideBar = async ({ children }) => {
         <div className={styles.sidebar__main}>
           <ul>
             <li>
-              <Link href={""}>حساب کاربری</Link>
+              <Link href={"/dashboard"}>حساب کاربری</Link>
             </li>
             <li>
               <Link href={""}>آگهی های من</Link>
             </li>
             <li>
-              <Link href={""}>ثبت آگهی</Link>
+              <Link href={"dashboard/add"}>ثبت آگهی</Link>
             </li>
           </ul>
         </div>
         <LogOutButton />
       </div>
-      <div className="main"> {children}</div>
+      <div className={styles.main}> {children}</div>
     </section>
   );
 };

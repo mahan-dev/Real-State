@@ -1,7 +1,6 @@
 import React, { JSX } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-
 interface childrenProps {
   children: React.ReactNode;
 }

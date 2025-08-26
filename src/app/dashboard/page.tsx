@@ -1,13 +1,13 @@
-import DashboardPage from "@/components/templates/DashboardPage";
 import { getServerSession } from "next-auth";
-import React from "react";
 import { authOptions } from "../api/auth/[...nextauth]/route";
-import User from "@/models/User";
+
 import connectDb from "@/utils/connectDb";
+import User from "@/models/User";
+
+import DashboardPage from "@/components/templates/DashboardPage";
 
 const page = async () => {
-
-  await connectDb()
+  await connectDb();
   const session = await getServerSession(authOptions);
   const email = session?.user.email;
 
@@ -15,7 +15,7 @@ const page = async () => {
     createdAt: string;
   };
   try {
-     user = await User.findOne({ email }) ;
+    user = await User.findOne({ email });
   } catch {
     console.log("error");
   }

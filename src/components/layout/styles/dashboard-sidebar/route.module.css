@@ -4,7 +4,7 @@
 }
 
 .sidebar{
-    @apply flex flex-col w-[230px]  h-fit py-2 px-4 rounded-md;
+    @apply flex flex-col flex-shrink-0 w-[230px]  h-fit py-2 px-4 rounded-md;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 
 }
@@ -32,6 +32,6 @@
 }
 
 .main{
-
+    @apply w-full;
 }
 

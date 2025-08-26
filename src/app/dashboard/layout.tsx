@@ -1,8 +1,10 @@
-import DashboardSideBar from "@/components/layout/DashboardSideBar";
 import React from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+
+import DashboardSideBar from "@/components/layout/DashboardSideBar";
+
 const DashboardLayout = async ({ children }) => {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/signup");

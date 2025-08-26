@@ -13,6 +13,7 @@ export const authOptions: AuthOptions = {
   secret: process.env.SECRET_KEY,
   session: {
     strategy: "jwt",
+    maxAge: 1 * 60 * 60 * 24
   },
   providers: [
     CredentialsProvider({

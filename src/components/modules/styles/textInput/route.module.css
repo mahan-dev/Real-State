@@ -1,0 +1,22 @@
+.container {
+}
+
+.container__textarea{
+    @apply w-[250px] outline-none p-3 border-2 rounded-lg  max-h-[220px];
+    box-shadow:  0 0px 15px rgba(0,0,0,0.12);
+}
+
+
+.container__textarea , .container__input {
+    @apply text-gray-500
+}
+
+.container__input {
+    @apply  w-[250px] caret-orange-500 px-2 py-1 border-2 border-opacity-0 outline-none rounded-md transition-all duration-150 ease-linear  ;
+    box-shadow:  0 0px 15px rgba(0,0,0,0.12);
+    &:hover,
+    &:focus
+     {
+        @apply border-2 border-opacity-100 border-orange-500;
+    } 
+}

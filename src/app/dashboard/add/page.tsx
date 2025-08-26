@@ -1,11 +1,9 @@
-import React from 'react';
+import { JSX } from "react";
 
-const page = () => {
-    return (
-        <section>
-            <h2>hi</h2>
-        </section>
-    );
+import ProfileAddPage from "@/components/templates/ProfileAddPage";
+
+const page = (): JSX.Element => {
+  return <ProfileAddPage />;
 };
 
 export default page;

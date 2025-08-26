@@ -1,0 +1,4 @@
+
+.date {
+    @apply flex w-fit bg-orange-500 bg-opacity-30 text-white rounded-md px-3 py-1 mt-3;
+}
