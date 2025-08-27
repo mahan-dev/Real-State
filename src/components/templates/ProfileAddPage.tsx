@@ -6,6 +6,8 @@ import styles from "@/templates/styles/profileAddPage/route.module.css";
 import { FormValues } from "@/templates/interface/Interface";
 import RadioButton from "@/modules/RadioButton";
 import TextList from "@/modules/TextList";
+import Button from "@mui/material/Button";
+import CustomDatePicker from "../modules/CustomDatePicker";
 
 const ProfileAddPage = () => {
   const { handleSubmit, watch, setValue, getValues } = useForm<FormValues>({
@@ -24,7 +26,7 @@ const ProfileAddPage = () => {
   });
 
   const profileData = watch();
-  console.log(profileData)
+  console.log(profileData);
 
   const inputProps = [
     {
@@ -100,7 +102,11 @@ const ProfileAddPage = () => {
           getValue={getValues}
         />
 
-        <button type="submit">ذخیره</button>
+        <CustomDatePicker profileData={profileData} setProfileData={setValue} type="constructionDate" />
+
+        <Button type="submit" variant="contained" color="primary">
+          ذخیره
+        </Button>
       </form>
     </section>
   );

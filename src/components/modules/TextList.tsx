@@ -6,6 +6,7 @@ import { MdAddBox } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 // icons
 import styles from "@/modules/styles/textList/route.module.css";
+import Button from "@mui/material/Button";
 
 interface listProps {
   profileData: FormValues;
@@ -56,19 +57,26 @@ const TextList = ({
               onChange={(e) => changeHandler(e, index)}
             />
 
-            <div
-              className={styles.card__delete}
+            <Button
+              color="secondary"
+              variant="outlined"
               onClick={() => deleteHandler(index)}
             >
-              <span>حذف</span>
+              <span className="ml-1">حذف</span>
               <AiFillDelete />
-            </div>
+            </Button>
           </div>
         ))}
-        <button className={styles.button} onClick={addHandler}>
+
+        <Button
+          className={styles.button}
+          onClick={addHandler}
+          color="primary"
+          variant="contained"
+        >
           افزودن
           <MdAddBox className="text-[20px] " />
-        </button>
+        </Button>
       </div>
     </section>
   );
