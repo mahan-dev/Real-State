@@ -1,5 +1,5 @@
 .container{
-    @apply flex mt-10 gap-8;
+    @apply flex mt-10 mb-6 gap-8;
 
 }
 

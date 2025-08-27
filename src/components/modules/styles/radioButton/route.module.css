@@ -1,7 +1,10 @@
 
 .container {
-    @apply mt-6 flex;
+    @apply mt-8 flex flex-col;
 
+    & h3 {
+        @apply mb-2
+    }
     
     & .main {
         @apply flex

@@ -4,10 +4,11 @@ import TextInput from "@/modules/TextInput";
 import styles from "@/templates/styles/profileAddPage/route.module.css";
 
 import { FormValues } from "@/templates/interface/Interface";
-import RadioButton from "../modules/RadioButton";
+import RadioButton from "@/modules/RadioButton";
+import TextList from "@/modules/TextList";
 
 const ProfileAddPage = () => {
-  const { handleSubmit, watch, setValue } = useForm<FormValues>({
+  const { handleSubmit, watch, setValue, getValues } = useForm<FormValues>({
     defaultValues: {
       title: "",
       description: "",
@@ -23,7 +24,7 @@ const ProfileAddPage = () => {
   });
 
   const profileData = watch();
-  console.log(profileData);
+  console.log(profileData)
 
   const inputProps = [
     {
@@ -62,10 +63,10 @@ const ProfileAddPage = () => {
   const submitHandler = (data: FormValues) => {};
 
   return (
-    <section>
+    <section className="">
       <h2 className={styles.title}>ثبت آگهی</h2>
 
-      <form onSubmit={handleSubmit(submitHandler)}>
+      <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
         {inputProps.map((item) => (
           <TextInput
             key={item.name}
@@ -77,14 +78,29 @@ const ProfileAddPage = () => {
           />
         ))}
 
-        <RadioButton profileData={profileData} setProfileData={setValue} />
+        <RadioButton
+          title="دسته بندی"
+          profileData={profileData}
+          setProfileData={setValue}
+        />
 
-        <button
-          className="w-full text-white bg-orange-500 mt-6 rounded-md py-1 transition-all duration-200 hover:bg-opacity-70"
-          type="submit"
-        >
-          ذخیره
-        </button>
+        <TextList
+          title="امکانات رفاهی"
+          profileData={profileData}
+          setProfileData={setValue}
+          type="amenities"
+          getValue={getValues}
+        />
+
+        <TextList
+          title="قوانین"
+          profileData={profileData}
+          setProfileData={setValue}
+          type="rules"
+          getValue={getValues}
+        />
+
+        <button type="submit">ذخیره</button>
       </form>
     </section>
   );

@@ -1,0 +1,25 @@
+.button {
+    @apply flex items-center gap-1 text-white bg-orange-500 p-2 rounded-md
+}
+
+
+.card {
+    @apply flex gap-2  mb-4;
+    
+}
+
+.card__delete {
+    @apply cursor-pointer flex text-red-500 px-3 py-1 border-2 border-red-500 rounded-md;
+}
+
+.card input {
+
+    @apply flex w-[250px]  caret-orange-500 px-2 py-1 border-2 border-opacity-0 outline-none rounded-md transition-all duration-150 ease-linear;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.12);
+
+    &:hover,
+    &:focus {
+        @apply border-2 border-opacity-100 border-orange-500;
+
+    }
+}
