@@ -12,7 +12,6 @@
     @apply bg-orange-500 bg-opacity-20 !important;
   }
 }
-
 .rmdp-week-day {
   @apply text-orange-500 !important;
 }

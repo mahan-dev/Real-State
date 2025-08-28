@@ -11,7 +11,6 @@ const DashboardPage = ({ createdAt }: DashboardProps) => {
   const date = new Date(createdAt).toLocaleDateString("fa-IR");
 
   const dateHandler = () => {
-    console.log(date, "line 14");
     if (date !== "Invalid Date") return;
     toast.error("مشکلی پیش آمده!");
   };

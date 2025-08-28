@@ -19,15 +19,19 @@ const SignupValidation = async ({
   rePassword,
   setIsLoading,
 }: signupProps) => {
-  if (!email || !password || !rePassword)
-    return toast.error("فیلد هارا خالی نگذارید");
-  if (password !== rePassword) return toast.error("رمز ها برابر نیست");
+  if (!email || !password || !rePassword) {
+    toast.error("فیلد هارا خالی نگذارید");
+    return;
+  }
+  if (password !== rePassword) {
+    toast.error("رمز ها برابر نیست");
+    return;
+  }
 
   setIsLoading(true);
   try {
     const res = await axios.post<FormData>("api/signup", form);
     const data = res.data;
-    console.log(data);
     if (res.status === 201) {
       toast.success("حساب کاربری ایجاد شد");
       await new Promise((resolver) => setTimeout(resolver, 2000));

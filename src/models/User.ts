@@ -3,8 +3,8 @@ import { Schema, Document, Model, model, models } from "mongoose";
 interface UserInterface extends Document {
   email: string;
   password: string;
-  createdAt: object;
-  updatedAt: object;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export const userSchema = new Schema<UserInterface>({
@@ -25,7 +25,7 @@ export const userSchema = new Schema<UserInterface>({
     immutable: true,
   },
   updatedAt: {
-    type: String,
+    type: Date,
     default: () => Date.now(),
   },
 });

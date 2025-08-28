@@ -26,7 +26,6 @@ const ProfileAddPage = () => {
   });
 
   const profileData = watch();
-  console.log(profileData);
 
   const inputProps = [
     {

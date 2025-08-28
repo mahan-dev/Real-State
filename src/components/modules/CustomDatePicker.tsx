@@ -28,10 +28,7 @@ const CustomDatePicker = ({
     <section className={styles.container}>
       <p>{title}</p>
       <DatePicker
-        containerStyle={{
-          color: "red",
-        }}
-        className={styles.calender}
+        className="calender"
         inputClass={styles.container__datePicker}
         calendar={persian}
         locale={persian_fa}

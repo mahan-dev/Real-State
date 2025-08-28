@@ -16,7 +16,6 @@ const RadioButton = ({
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProfileData(name as keyof FormValues, value);
-    console.log(profileData);
   };
 
   const radioListProps = [

@@ -5,13 +5,20 @@ import toast from "react-hot-toast";
 interface signInProps {
   email: string;
   password: string;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const signinValidation = async ({ email, password, setIsLoading }: signInProps) => {
-  if (!email || !password) return toast.error("لطفا فیلد هارا خالی نگذارید !");
+const signinValidation = async ({
+  email,
+  password,
+  setIsLoading,
+}: signInProps) => {
+  if (!email || !password) {
+    toast.error("فیلد هارا خالی نگذارید");
+    return;
+  }
 
-  setIsLoading(true)
+  setIsLoading(true);
   const res = await signIn("credentials", {
     email,
     password,
@@ -19,13 +26,13 @@ const signinValidation = async ({ email, password, setIsLoading }: signInProps) 
   });
   if (res.status === 200) {
     toast.success("با موفقیت وارد شدید");
-    setIsLoading(false)
-    return true
+    setIsLoading(false);
+    return true;
   }
   if (res.error) {
     toast.error(res.error);
-    setIsLoading(false)
-    return false
-  } 
+    setIsLoading(false);
+    return false;
+  }
 };
 export default signinValidation;
