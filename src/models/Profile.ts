@@ -1,41 +1,55 @@
-import { Document, Schema } from "mongoose";
+import { model, Model, models, Schema } from "mongoose";
+import { ProfileTypes } from "@/models/interface/ProfileTypes";
 
-interface ProfileTypes extends Document {
-  title: string;
-  description: string;
-  location: string;
-  phone: string;
-  price: string;
-  realState: string;
-  constructionDate: Date;
-  category: string;
-  rules: string[];
-  amenities: string[];
-}
+const ProfileSchema = new Schema<ProfileTypes>(
+  {
+    title: {
+      required: true,
+      type: String,
+    },
+    description: {
+      required: true,
+      type: String,
+    },
+    location: {
+      required: true,
+      type: String,
+    },
+    phone: {
+      required: true,
+      type: String,
+    },
+    realState: {
+      required: true,
+      type: String,
+    },
+    constructionDate: {
+      required: true,
+      type: Date,
+    },
+    category: {
+      required: true,
+      type: String,
+      enum: ["villa", "apartment", "store", "office"],
+    },
+    rules: {
+      type: [String],
+      default: [],
+    },
+    amenities: {
+      type: [String],
+      default: [],
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "RealStateDb",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const ProfileSchema = new Schema<ProfileTypes>({
-  title: {
-    required: true,
-    type: String,
-  },
-  description: {
-    required: true,
-    type: String,
-  },
-  location: {
-    required: true,
-    type: String,
-  },
-  phone: {
-    required: true,
-    type: String,
-  },
-  realState: {
-    required: true,
-    type: String,
-  },
-  constructionDate: {
-    required: true,
-    type: Date,
-  },
-});
+const Profile: Model<ProfileTypes> =
+  models.Profile || model<ProfileTypes>("profile", ProfileSchema);
+export default Profile;
