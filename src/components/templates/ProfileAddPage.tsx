@@ -102,7 +102,12 @@ const ProfileAddPage = () => {
           getValue={getValues}
         />
 
-        <CustomDatePicker profileData={profileData} setProfileData={setValue} type="constructionDate" />
+        <CustomDatePicker
+          title="تاریخ ساخت"
+          profileData={profileData}
+          setProfileData={setValue}
+          type="constructionDate"
+        />
 
         <Button type="submit" variant="contained" color="primary">
           ذخیره

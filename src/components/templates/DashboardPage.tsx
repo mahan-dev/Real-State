@@ -1,5 +1,7 @@
-import React from "react";
-import styles from "@/templates/styles/dashboardPage/route.module.css"
+"use client";
+import React, { useEffect } from "react";
+import styles from "@/templates/styles/dashboardPage/route.module.css";
+import toast from "react-hot-toast";
 
 interface DashboardProps {
   createdAt: string;
@@ -7,6 +9,16 @@ interface DashboardProps {
 
 const DashboardPage = ({ createdAt }: DashboardProps) => {
   const date = new Date(createdAt).toLocaleDateString("fa-IR");
+
+  const dateHandler = () => {
+    console.log(date, "line 14");
+    if (date !== "Invalid Date") return;
+    toast.error("مشکلی پیش آمده!");
+  };
+
+  useEffect(() => {
+    dateHandler();
+  }, []);
 
   return (
     <section>
@@ -16,9 +28,7 @@ const DashboardPage = ({ createdAt }: DashboardProps) => {
       </p>
 
       <div className={styles.date}>
-        <p className="text-black ml-2">
-          تاریخ عضویت: 
-        </p>
+        <p className="text-black ml-2">تاریخ عضویت:</p>
         <span className="text-orange-500"> {date}</span>
       </div>
     </section>

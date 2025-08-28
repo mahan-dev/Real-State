@@ -1,0 +1,31 @@
+.rmdp-arrow {
+  &:hover {
+    @apply bg-orange-300 !important;
+  }
+
+  border: solid orange !important;
+  border-width: 0 2px 2px 0 !important;
+}
+
+.rmdp-arrow-container {
+  &:hover {
+    @apply bg-orange-500 bg-opacity-20 !important;
+  }
+}
+
+.rmdp-week-day {
+  @apply text-orange-500 !important;
+}
+
+.rmdp-day.rmdp-selected span:not(.highlight) {
+  @apply bg-orange-500 !important;
+}
+
+.rmdp-day.rmdp-today span {
+  @apply bg-orange-500 bg-opacity-30 text-white !important;
+}
+
+.rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+  @apply bg-orange-300 !important;
+  color: #fff;
+}

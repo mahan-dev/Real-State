@@ -1,0 +1,13 @@
+.container {
+    @apply mt-8
+}
+
+.container__datePicker {
+    @apply px-2 py-1 text-orange-500 border-2 cursor-pointer rounded-md outline-none transition-all duration-200 ease-linear;
+
+    &:hover,
+    &:focus {
+        @apply border-2 border-orange-500;
+    }
+}
+

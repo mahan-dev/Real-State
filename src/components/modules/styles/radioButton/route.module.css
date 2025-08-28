@@ -17,6 +17,6 @@
         @apply cursor-pointer pl-3;
     }
     & input {
-        @apply accent-orange-500 
+        @apply accent-orange-500 cursor-pointer;
     }
 }
