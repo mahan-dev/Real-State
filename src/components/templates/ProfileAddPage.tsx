@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import TextInput from "@/modules/TextInput";
 import styles from "@/templates/styles/profileAddPage/route.module.css";
 
-import { FormValues } from "@/templates/interface/Interface";
+import { FormValues, ProfileResponse } from "@/templates/interface/Interface";
 import RadioButton from "@/modules/RadioButton";
 import TextList from "@/modules/TextList";
 import Button from "@mui/material/Button";
 import CustomDatePicker from "../modules/CustomDatePicker";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ProfileAddPage = () => {
   const { handleSubmit, watch, setValue, getValues } = useForm<FormValues>({
@@ -61,7 +63,23 @@ const ProfileAddPage = () => {
     },
   ];
 
-  const submitHandler = (data: FormValues) => {};
+  const toastDuration: { duration: number } = {
+    duration: 1500,
+  };
+  const submitHandler = async (formData: FormValues) => {
+    
+    try {
+
+      const res = await axios.post<ProfileResponse>("/api/profile", formData);
+    }
+     catch(error){
+      const errorMessage = error.response.data.error;
+      toast.error(errorMessage, toastDuration)
+      console.log("error", errorMessage, error)
+     }
+     
+   
+  };
 
   return (
     <section className="">

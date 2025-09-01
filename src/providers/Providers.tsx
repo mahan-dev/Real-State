@@ -11,10 +11,7 @@ type ChildrenProps = {
 const Providers = ({ children }: ChildrenProps): JSX.Element => {
   return (
     <SessionProvider>
-      <ThemeProvider theme={theme}>
-
-      {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
       <Toaster />
     </SessionProvider>
   );

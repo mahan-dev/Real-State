@@ -16,3 +16,13 @@ export interface FormValues {
   rules: string[];
   amenities: string[];
 }
+
+export interface ProfileResponse extends FormValues {
+  _id: string;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
+  message: string;
+  error: string;
+  data: object
+}

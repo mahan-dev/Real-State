@@ -20,7 +20,7 @@ const SignupValidation = async ({
   setIsLoading,
 }: signupProps) => {
   if (!email || !password || !rePassword) {
-    toast.error("فیلد هارا خالی نگذارید");
+    toast.error("فیلد هارا خالی نگذارید", { duration: 1500});
     return;
   }
   if (password !== rePassword) {

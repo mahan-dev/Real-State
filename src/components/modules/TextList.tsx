@@ -39,7 +39,8 @@ const TextList = ({
   };
 
   const deleteHandler = (index: number) => {
-    const list = [...(profileData[type] as string[])];
+    const profileDataType = profileData[type] as string[];
+    const list = [...profileDataType];
     list.splice(index, 1);
     setProfileData(type, list);
   };

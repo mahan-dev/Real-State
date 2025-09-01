@@ -8,6 +8,7 @@ import { CgProfile } from "react-icons/cg";
 const Header = () => {
   const { data } = useSession();
 
+
   return (
     <header className={styles.header}>
       <ul className="flex gap-4">

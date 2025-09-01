@@ -14,7 +14,7 @@ const signinValidation = async ({
   setIsLoading,
 }: signInProps) => {
   if (!email || !password) {
-    toast.error("فیلد هارا خالی نگذارید");
+    toast.error("فیلد هارا خالی نگذارید", { duration: 1500 });
     return;
   }
 

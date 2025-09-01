@@ -10,7 +10,7 @@ interface UserCredentials {
 }
 
 export const authOptions: AuthOptions = {
-  secret: process.env.SECRET_KEY,
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
     maxAge: 1 * 60 * 60 * 24
@@ -31,7 +31,7 @@ export const authOptions: AuthOptions = {
         if (!email || !password)
           throw new Error(" لطفا اطلاعات معتبر وارد کنید");
 
-        const user = await UserModel.findOne({ email: email });
+        const user = await UserModel.findOne({ email });
         if (!user) throw new Error("لطفا ابتدا حساب کاربری ایجاد کنید ");
         const isValid = await verifyPassword(password, user.password);
         if (!isValid) throw new Error(" ایمیل یا پسورد معتبر نیست ");
