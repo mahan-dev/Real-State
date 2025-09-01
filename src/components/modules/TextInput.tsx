@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 import { FormValues } from "@/templates/interface/Interface";
 import { UseFormSetValue } from "react-hook-form";
 import styles from "@/modules/styles/textInput/route.module.css";
@@ -9,6 +9,8 @@ interface textType {
   name: string;
   profileData: FormValues;
   textarea?: boolean;
+  error: boolean;
+  setError: React.Dispatch<SetStateAction<boolean>>;
   setValue: UseFormSetValue<FormValues>;
 }
 
@@ -17,11 +19,13 @@ const TextInput = ({
   name,
   profileData,
   setValue,
+  error,
+  setError,
   textarea = false,
 }: textType) => {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
+    setError(false);
     setValue(name as keyof FormValues, p2e(value));
   };
 
@@ -30,11 +34,13 @@ const TextInput = ({
       <p className="mt-8 mb-1 ">{title}</p>
 
       {textarea ? (
-        <textarea className={styles.container__textarea} />
+        <textarea
+          className={`${styles.container__textarea} ${error && styles.error}`}
+        />
       ) : (
         <input
           type="text"
-          className={styles.container__input}
+          className={`${styles.container__input} ${error && styles.error}`}
           name={name}
           value={profileData[name]}
           onChange={changeHandler}

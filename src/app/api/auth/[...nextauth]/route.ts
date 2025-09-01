@@ -13,13 +13,12 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
-    maxAge: 1 * 60 * 60 * 24
+    maxAge: 1 * 60 * 60 * 24,
   },
   providers: [
     CredentialsProvider({
       credentials: {},
       authorize: async (credentials: UserCredentials): Promise<User | null> => {
-        
         const { email, password } = credentials;
 
         try {

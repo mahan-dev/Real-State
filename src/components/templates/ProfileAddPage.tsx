@@ -10,8 +10,11 @@ import Button from "@mui/material/Button";
 import CustomDatePicker from "../modules/CustomDatePicker";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const ProfileAddPage = () => {
+  const [error, setError] = useState<boolean>(false);
+
   const { handleSubmit, watch, setValue, getValues } = useForm<FormValues>({
     defaultValues: {
       title: "",
@@ -61,24 +64,31 @@ const ProfileAddPage = () => {
       profileData: profileData,
       setValue: setValue,
     },
+    {
+      title: "بنگاه",
+      name: "realState",
+      profileData: profileData,
+      setValue: setValue,
+    },
   ];
 
   const toastDuration: { duration: number } = {
     duration: 1500,
   };
   const submitHandler = async (formData: FormValues) => {
-    
+    console.log(formData);
     try {
-
-      const res = await axios.post<ProfileResponse>("/api/profile", formData);
-    }
-     catch(error){
+      const { data } = await axios.post<ProfileResponse>(
+        "/api/profile",
+        formData
+      );
+      console.log(data);
+    } catch (error) {
       const errorMessage = error.response.data.error;
-      toast.error(errorMessage, toastDuration)
-      console.log("error", errorMessage, error)
-     }
-     
-   
+      toast.error(errorMessage, toastDuration);
+      setError(true);
+      console.log("error", errorMessage, error);
+    }
   };
 
   return (
@@ -93,7 +103,9 @@ const ProfileAddPage = () => {
             title={item.title}
             name={item.name}
             setValue={item.setValue}
-            textarea={false}
+            textarea={item.textarea}
+            setError={setError}
+            error={error}
           />
         ))}
 
