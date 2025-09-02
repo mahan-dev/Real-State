@@ -14,6 +14,10 @@ interface textType {
   setValue: UseFormSetValue<FormValues>;
 }
 
+type InputChangeEvent = React.ChangeEvent<
+  HTMLInputElement | HTMLTextAreaElement
+>;
+
 const TextInput = ({
   title,
   name,
@@ -23,7 +27,7 @@ const TextInput = ({
   setError,
   textarea = false,
 }: textType) => {
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (e: InputChangeEvent) => {
     const { name, value } = e.target;
     setError(false);
     setValue(name as keyof FormValues, p2e(value));
@@ -35,7 +39,10 @@ const TextInput = ({
 
       {textarea ? (
         <textarea
+          name={name}
           className={`${styles.container__textarea} ${error && styles.error}`}
+          onChange={changeHandler}
+          value={profileData[name]}
         />
       ) : (
         <input

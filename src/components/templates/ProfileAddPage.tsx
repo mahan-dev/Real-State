@@ -3,32 +3,33 @@ import { useForm } from "react-hook-form";
 import TextInput from "@/modules/TextInput";
 import styles from "@/templates/styles/profileAddPage/route.module.css";
 
-import { FormValues, ProfileResponse } from "@/templates/interface/Interface";
+import { FormValues } from "@/templates/interface/Interface";
 import RadioButton from "@/modules/RadioButton";
 import TextList from "@/modules/TextList";
 import Button from "@mui/material/Button";
 import CustomDatePicker from "../modules/CustomDatePicker";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useState } from "react";
+import { AddHandler } from "@/helper/profileAddPage/AddHandler";
 
 const ProfileAddPage = () => {
   const [error, setError] = useState<boolean>(false);
+  const [disable, setDisable] = useState<boolean>(false);
 
-  const { handleSubmit, watch, setValue, getValues } = useForm<FormValues>({
-    defaultValues: {
-      title: "",
-      description: "",
-      location: "",
-      phone: "",
-      price: "",
-      realState: "",
-      constructionDate: new Date(),
-      category: "",
-      rules: [],
-      amenities: [],
-    },
-  });
+  const { handleSubmit, watch, setValue, getValues, reset } =
+    useForm<FormValues>({
+      defaultValues: {
+        title: "",
+        description: "",
+        location: "",
+        phone: "",
+        price: "",
+        realState: "",
+        constructionDate: new Date(),
+        category: "",
+        rules: [],
+        amenities: [],
+      },
+    });
 
   const profileData = watch();
 
@@ -72,23 +73,8 @@ const ProfileAddPage = () => {
     },
   ];
 
-  const toastDuration: { duration: number } = {
-    duration: 1500,
-  };
   const submitHandler = async (formData: FormValues) => {
-    console.log(formData);
-    try {
-      const { data } = await axios.post<ProfileResponse>(
-        "/api/profile",
-        formData
-      );
-      console.log(data);
-    } catch (error) {
-      const errorMessage = error.response.data.error;
-      toast.error(errorMessage, toastDuration);
-      setError(true);
-      console.log("error", errorMessage, error);
-    }
+    await AddHandler(formData, { setError, setDisable, reset });
   };
 
   return (
@@ -138,7 +124,12 @@ const ProfileAddPage = () => {
           type="constructionDate"
         />
 
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={disable}
+        >
           ذخیره
         </Button>
       </form>
