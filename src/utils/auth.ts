@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import { verify } from "jsonwebtoken";
 
-const hashedPassword = async (password: string) => {
+const hashedPassword = async (password: string): Promise<string> => {
   const hashPassword = await bcrypt.hash(password, 10);
   return hashPassword;
 };
@@ -15,18 +15,18 @@ const verifyPassword = async (
 };
 
 type TokenPayload = {
-   email: string;
-}
+  email: string;
+};
 
 const verifyToken = (token: string, secretKey: string) => {
   try {
     const result = verify(token, secretKey) as TokenPayload;
     return {
-      email: result.email ,
+      email: result.email,
     };
   } catch {
     return false;
   }
 };
-        
+
 export { hashedPassword, verifyPassword, verifyToken };
