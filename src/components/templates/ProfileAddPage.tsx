@@ -10,10 +10,11 @@ import Button from "@mui/material/Button";
 import CustomDatePicker from "../modules/CustomDatePicker";
 import { useState } from "react";
 import { AddHandler } from "@/helper/profileAddPage/AddHandler";
+import Loader from "@/modules/Loader";
 
 const ProfileAddPage = () => {
   const [error, setError] = useState<boolean>(false);
-  const [disable, setDisable] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { handleSubmit, watch, setValue, getValues, reset } =
     useForm<FormValues>({
@@ -74,7 +75,7 @@ const ProfileAddPage = () => {
   ];
 
   const submitHandler = async (formData: FormValues) => {
-    await AddHandler(formData, { setError, setDisable, reset });
+    await AddHandler(formData, { setError, reset, setLoading });
   };
 
   return (
@@ -124,14 +125,15 @@ const ProfileAddPage = () => {
           type="constructionDate"
         />
 
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          disabled={disable}
-        >
-          ذخیره
-        </Button>
+        {loading ? (
+          <div className="flex justify-center">
+            <Loader />
+          </div>
+        ) : (
+          <Button type="submit" variant="contained" color="primary">
+            ذخیره
+          </Button>
+        )}
       </form>
     </section>
   );

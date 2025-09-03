@@ -25,10 +25,10 @@ const DashboardSideBar = async ({ children }) => {
               <Link href={"/dashboard"}>حساب کاربری</Link>
             </li>
             <li>
-              <Link href={""}>آگهی های من</Link>
+              <Link href={"/dashboard/my-profiles"}>آگهی های من</Link>
             </li>
             <li>
-              <Link href={"dashboard/add"}>ثبت آگهی</Link>
+              <Link href={"/dashboard/add"}>ثبت آگهی</Link>
             </li>
           </ul>
         </div>

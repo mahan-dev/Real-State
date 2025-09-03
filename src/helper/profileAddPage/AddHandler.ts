@@ -9,7 +9,7 @@ import { UseFormReset } from "react-hook-form";
 
 interface AddInterface {
   setError: React.Dispatch<SetStateAction<boolean>>;
-  setDisable: React.Dispatch<SetStateAction<boolean>>;
+  setLoading: React.Dispatch<SetStateAction<boolean>>;
   reset: UseFormReset<FormValues>;
 }
 
@@ -18,7 +18,7 @@ const notificationTimeout = async () =>
 
 export const AddHandler = async (
   formData: FormValues,
-  { setError, setDisable, reset }: AddInterface
+  { setError, reset, setLoading }: AddInterface
 ) => {
   const phoneNumber = +formData.phone;
   const price = +formData.price;
@@ -32,7 +32,7 @@ export const AddHandler = async (
   }
 
   try {
-    setDisable(true);
+    setLoading(true);
     const { data } = await axios.post<ProfileResponse>(
       "/api/profile",
       formData
@@ -50,6 +50,6 @@ export const AddHandler = async (
     setError(true);
     return error;
   } finally {
-    setDisable(false);
+    setLoading(false);
   }
 };

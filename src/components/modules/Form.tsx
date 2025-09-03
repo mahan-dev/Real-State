@@ -3,6 +3,7 @@ import styles from "@/templates/styles/signupPage/styles.module.css";
 import { FormData } from "@/templates/interface/Interface";
 import { ThreeDots } from "react-loader-spinner";
 import { getServerSession } from "next-auth";
+import Loader from "@/modules/Loader";
 
 interface FormInputProps {
   form: {
@@ -70,14 +71,7 @@ const Form = ({
         )}
 
         {isLoading ? (
-          <ThreeDots
-            height="80"
-            width="80"
-            color="#f97316"
-            radius="9"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{ margin: "auto" }}
-          />
+          <Loader />
         ) : (
           <button className="leading-[1.8]" type="submit">
             {button}
