@@ -1,14 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/templates/styles/signupPage/styles.module.css";
 import SignupValidation from "@/helper/signupPage/SignupHandler";
 import Form from "@/modules/Form";
 import Link from "next/link";
-import FormData from "@/templates/interface/Interface";
+import { FormData } from "@/templates/interface/Interface";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-const SignupPage = () => {
+interface SignupProps {
+  error: string;
+}
+
+const SignupPage = ({ error }: SignupProps) => {
   const [form, setForm] = useState<FormData>({
     email: "",
     password: "",
@@ -31,6 +36,14 @@ const SignupPage = () => {
     });
     if (res) router.push("/signin");
   };
+
+  const connectionErrorHandler = () => {
+    if (error) toast.error(error, { duration: 2000 });
+  };
+
+  useEffect(() => {
+    connectionErrorHandler();
+  }, []);
 
   return (
     <section className={styles.container}>

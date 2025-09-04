@@ -8,6 +8,8 @@ interface signInProps {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+type ErrorMessage = string | null;
+
 const signinValidation = async ({
   email,
   password,
@@ -30,7 +32,11 @@ const signinValidation = async ({
     return true;
   }
   if (res.error) {
-    toast.error(res.error);
+    const errorMessage: ErrorMessage = res.error.includes("buffering timed out")
+      ? "مشکلی رخ داده است"
+      : null;
+    console.log(errorMessage);
+    toast.error(errorMessage ?? res.error);
     setIsLoading(false);
     return false;
   }

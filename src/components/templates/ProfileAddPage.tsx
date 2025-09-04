@@ -1,5 +1,5 @@
 "use client";
-import { useForm } from "react-hook-form";
+import { SetValueConfig, useForm } from "react-hook-form";
 import TextInput from "@/modules/TextInput";
 import styles from "@/templates/styles/profileAddPage/route.module.css";
 

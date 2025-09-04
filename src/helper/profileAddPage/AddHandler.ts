@@ -20,6 +20,8 @@ export const AddHandler = async (
   formData: FormValues,
   { setError, reset, setLoading }: AddInterface
 ) => {
+  console.log('👏 ~ AddHandler.ts:20 -> FormValues: ', formData);
+  
   const phoneNumber = +formData.phone;
   const price = +formData.price;
 

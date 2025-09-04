@@ -19,6 +19,10 @@ const ProfileSchema = new Schema<ProfileTypes>(
       required: true,
       type: String,
     },
+    price:{ 
+      required: true,
+      type:String
+    },
     realState: {
       required: true,
       type: String,
