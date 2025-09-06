@@ -1,5 +1,5 @@
 .container {
-    @apply  p-3 border-2 border-orange-300 rounded-md;
+    @apply  bg-orange-500 bg-opacity-5 p-3 border-2 border-orange-300 rounded-md;
 }
 
 .icon  {
@@ -18,4 +18,8 @@
 
 .location, .price {
     @apply text-[0.9rem] text-gray-500
+}
+
+.footer {
+    @apply flex mt-3 px-1 py-1 rounded-md cursor-pointer justify-between items-center transition-all duration-150 ease-linear text-orange-500  ;
 }

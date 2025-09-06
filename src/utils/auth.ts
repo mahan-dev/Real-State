@@ -1,15 +1,17 @@
 import bcrypt from "bcryptjs";
 import { verify } from "jsonwebtoken";
+import {
+  hashedPasswordType,
+  verifyPasswordType,
+  verifyTokenType,
+} from "@/utils/Types/route";
 
-const hashedPassword = async (password: string): Promise<string> => {
+const hashedPassword: hashedPasswordType = async (password) => {
   const hashPassword = await bcrypt.hash(password, 10);
   return hashPassword;
 };
 
-const verifyPassword = async (
-  password: string,
-  hashPassword: string
-): Promise<boolean> => {
+const verifyPassword: verifyPasswordType = async (password, hashPassword) => {
   const isValid = await bcrypt.compare(password, hashPassword);
   return isValid;
 };
@@ -18,7 +20,7 @@ type TokenPayload = {
   email: string;
 };
 
-const verifyToken = (token: string, secretKey: string) => {
+const verifyToken: verifyTokenType = (token, secretKey) => {
   try {
     const result = verify(token, secretKey) as TokenPayload;
     return {

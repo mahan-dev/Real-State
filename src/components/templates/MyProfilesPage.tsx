@@ -9,7 +9,6 @@ export interface Profile {
 
 const MyProfilesPage = ({ profileData }: Profile) => {
   const userProfile = profileData?.profiles;
-  console.log(userProfile);
 
   return (
     <>
@@ -17,7 +16,7 @@ const MyProfilesPage = ({ profileData }: Profile) => {
 
       <div className={styles.container}>
         {userProfile?.map((item) => (
-          <DashboardCard key={item._id} data={item} />
+          <DashboardCard key={item._id} data={JSON.parse(JSON.stringify(item))} />
         ))}
       </div>
     </>

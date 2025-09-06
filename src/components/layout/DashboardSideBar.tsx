@@ -5,7 +5,9 @@ import { CgProfile } from "react-icons/cg";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Link from "next/link";
-import LogOutButton from "../elements/LogOutButton";
+import LogOutButton from "@/elements/LogOutButton";
+
+import { AiFillProfile } from "react-icons/ai";
 
 const DashboardSideBar = async ({ children }) => {
   const session = await getServerSession(authOptions);
@@ -22,6 +24,7 @@ const DashboardSideBar = async ({ children }) => {
         <div className={styles.sidebar__main}>
           <ul>
             <li>
+              <AiFillProfile />
               <Link href={"/dashboard"}>حساب کاربری</Link>
             </li>
             <li>

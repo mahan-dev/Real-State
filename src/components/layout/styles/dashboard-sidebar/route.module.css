@@ -22,13 +22,14 @@
 .sidebar__main{
     @apply mt-4;
 
-    ul {
-        @apply px-[0.2rem]
-    }
     ul li {
-        @apply mb-2 ;
+        @apply flex text-orange-500 cursor-pointer px-2 py-1 rounded-md transition-all duration-150 ease-linear hover:mr-2 hover:bg-orange-500 hover:bg-opacity-15 hover:px-2 hover:py-1 ;
+    }
+    ul li svg {
+        @apply text-orange-500 text-[1.3rem]
     }
 
+   
 }
 
 .main{

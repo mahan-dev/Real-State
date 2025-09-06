@@ -10,8 +10,6 @@ export const POST = async (req: Request) => {
   try {
     await connectDb();
 
-    const body = await req.json();
-
     const {
       title,
       description,
@@ -23,7 +21,7 @@ export const POST = async (req: Request) => {
       category,
       rules,
       amenities,
-    } = body;
+    } = await req.json();
 
     const session = await getServerSession(authOptions);
     if (!session)
@@ -80,5 +78,104 @@ export const POST = async (req: Request) => {
     );
   } catch {
     NextResponse.json({ error: "مشکلی در سرور رخ داده است" }, { status: 500 });
+  }
+};
+
+export const PATCH = async (req: Request) => {
+  try {
+    await connectDb();
+
+    const {
+      _id,
+      title,
+      description,
+      location,
+      phone,
+      price,
+      realState,
+      constructionDate,
+      category,
+      rules,
+      amenities,
+    } = await req.json();
+
+    const session = await getServerSession(authOptions);
+    if (!session)
+      return NextResponse.json({
+        status: "Failed",
+        error: "لطفا وارد حساب کابری خود شوید",
+      });
+
+    const user = await User.findOne({ email: session.user.email });
+    if (!user)
+      return NextResponse.json(
+        { status: "Failed", error: " حساب کابری پیدانشد" },
+        { status: 404 }
+      );
+
+    if (
+      !_id ||
+      !title ||
+      !location ||
+      !description ||
+      !phone ||
+      !realState ||
+      !price ||
+      !constructionDate ||
+      !category
+    )
+      return NextResponse.json(
+        {
+          status: "Failed",
+          error: "اطلاعات معتبر وارد کنید",
+        },
+        {
+          status: 422,
+        }
+      );
+
+    const profile = await Profile.findOne({ _id });
+
+    const userId = user._id as Types.ObjectId;
+    const profileId = profile.userId as Types.ObjectId;
+
+    if (!userId.equals(profileId))
+      return NextResponse.json(
+        {
+          status: "Failed",
+          error: "دسترسی شما به این آگهی محدود شده است",
+        },
+        {
+          status: 403,
+        }
+      );
+
+    profile.title = title;
+    profile.location = location;
+    profile.description = description;
+    profile.phone = phone;
+    profile.realState = realState;
+    profile.price = price;
+    profile.constructionDate = constructionDate;
+    profile.category = category;
+    profile.rules = rules;
+    profile.amenities = amenities;
+
+    await profile.save();
+    return NextResponse.json(
+      {
+        status: "Success",
+        message: "آگهی با موفقیت ویرایش شد",
+      },
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { status: "Failed", error: "مشکلی در سرور رخ داده است" },
+      { status: 500 }
+    );
   }
 };

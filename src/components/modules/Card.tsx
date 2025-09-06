@@ -6,6 +6,7 @@ import { PiOfficeChairDuotone } from "react-icons/pi";
 import { PiStorefrontDuotone } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import { TiLocation } from "react-icons/ti";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 import styles from "@/modules/styles/card/route.module.css";
 import { sp } from "@/utils/replaceNumber";
@@ -33,6 +34,11 @@ const Card = ({ data }: CardProps) => {
         {location}
       </div>
       <span className={styles.price}>{sp(price)} تومان</span>
+
+      <div className={styles.footer}>
+        <span>مشاهده آگهی</span>
+        <FaArrowLeftLong />
+      </div>
     </section>
   );
 };
