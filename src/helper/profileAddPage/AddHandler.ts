@@ -41,6 +41,7 @@ export const AddHandler = async (
     if (data.message) {
       toast.success(data.message);
       await notificationTimeout();
+      setError(false)
       reset();
     }
   } catch (error) {

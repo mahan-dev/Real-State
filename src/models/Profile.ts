@@ -55,5 +55,5 @@ const ProfileSchema = new Schema<ProfileTypes>(
 );
 
 const Profile: Model<ProfileTypes> =
-  models.Profile || model<ProfileTypes>("profile", ProfileSchema);
+  models.Profile || model<ProfileTypes>("Profile", ProfileSchema);
 export default Profile;

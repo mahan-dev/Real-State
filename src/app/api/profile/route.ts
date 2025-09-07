@@ -150,16 +150,16 @@ export const PATCH = async (req: Request) => {
         }
       );
 
-    profile.title = title;
-    profile.location = location;
-    profile.description = description;
-    profile.phone = phone;
-    profile.realState = realState;
-    profile.price = price;
-    profile.constructionDate = constructionDate;
-    profile.category = category;
-    profile.rules = rules;
-    profile.amenities = amenities;
+    Object.assign(profile, {
+      title,
+      location,
+      description,
+      phone,
+      realState,
+      price,
+      constructionDate,
+      category,
+    });
 
     await profile.save();
     return NextResponse.json(

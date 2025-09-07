@@ -1,38 +1,43 @@
-.container{
+.container {
     @apply flex mt-10 mb-6 gap-8;
 
 }
 
-.sidebar{
-    @apply flex flex-col flex-shrink-0 w-[230px]  h-fit py-2 px-4 rounded-md;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+.sidebar {
+    @apply flex flex-col flex-shrink-0 w-[230px] h-fit py-2 px-4 rounded-md;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 
 }
 
 .sidebar__header {
     @apply flex flex-col h-[110px] items-center justify-between;
+
     svg {
         @apply text-[40px] text-orange-500;
     }
+
     p {
         @apply text-gray-500 h-[50px] overflow-hidden border-b-2 border-[#c4c4c4]
     }
 }
 
-.sidebar__main{
+.sidebar__main {
     @apply mt-4;
 
     ul li {
-        @apply flex text-orange-500 cursor-pointer px-2 py-1 rounded-md transition-all duration-150 ease-linear hover:mr-2 hover:bg-orange-500 hover:bg-opacity-15 hover:px-2 hover:py-1 ;
+        @apply flex text-orange-500 cursor-pointer px-2 py-1 rounded-md transition-all duration-150 ease-linear hover:mr-2 hover:bg-orange-500 hover:bg-opacity-15 hover:px-2 hover:py-1;
     }
+
+    ul li a {
+        @apply w-full;
+    }
+
     ul li svg {
         @apply text-orange-500 text-[1.3rem]
     }
 
-   
 }
 
-.main{
+.main {
     @apply w-full;
 }
-

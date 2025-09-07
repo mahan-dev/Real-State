@@ -24,8 +24,9 @@ const DashboardSideBar = async ({ children }) => {
         <div className={styles.sidebar__main}>
           <ul>
             <li>
+              <Link href={"/dashboard"}>حساب کاربری
               <AiFillProfile />
-              <Link href={"/dashboard"}>حساب کاربری</Link>
+              </Link>
             </li>
             <li>
               <Link href={"/dashboard/my-profiles"}>آگهی های من</Link>
