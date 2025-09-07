@@ -2,7 +2,7 @@
 import { signOut } from "next-auth/react";
 import React, { JSX } from "react";
 import { FiLogOut } from "react-icons/fi";
-import styles from "@/modules/styles/logoutButton/route.module.css";
+import styles from "@/elements/styles/logoutButton/route.module.css";
 
 const LogOutButton = (): JSX.Element => {
   return (

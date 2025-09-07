@@ -1,5 +1,0 @@
-
-.button {
-    @apply flex w-fit px-[0.2rem] border border-transparent rounded-md items-center gap-2 text-red-500 transition-all duration-200 ease-linear hover:scale-105  hover:rounded-md ;
-
-}

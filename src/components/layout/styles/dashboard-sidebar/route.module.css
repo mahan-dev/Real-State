@@ -29,13 +29,13 @@
     }
 
     ul li a {
-        @apply w-full;
+        @apply flex w-full;
     }
 
-    ul li svg {
-        @apply text-orange-500 text-[1.3rem]
-    }
+}
 
+.icon {
+    @apply text-orange-500 text-[1.3rem] ml-2;
 }
 
 .main {

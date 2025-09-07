@@ -6,31 +6,32 @@ import Button from "@mui/material/Button";
 
 import styles from "@/modules/styles/dashboardCard/route.module.css";
 import axios from "axios";
-import { Types } from "mongoose";
+import { useRouter } from "next/navigation";
 
 interface DashboardProps {
   data: Profiles;
-  id: string;
 }
 const buttonStyles = { padding: "0 0.6rem", borderColor: "orange" };
 
-const editHandler = async () => {
-  try {
-    await axios.patch("/api/profile");
-  } catch (error) {
-    console.log("sd", error);
-  }
-};
-const deleteHandler = async (id: string) => {
-  try {
-    await axios.delete<string>(`/api/profile/delete/${id}`);
-    console.log("is working");
-  } catch {
-    console.log("something went wrong");
-  }
-};
-
 const DashboardCard = ({ data }: DashboardProps) => {
+  const editHandler = async () => {
+    try {
+      await axios.patch("/api/profile");
+    } catch (error) {
+      console.log("sd", error);
+    }
+  };
+
+  const router = useRouter();
+  const deleteHandler = async (id: string) => {
+    try {
+      const res = await axios.delete<string>(`/api/profile/delete/${id}`);
+      const status = res.status === 200;
+      if (status) router.refresh();
+    } catch {
+      console.log("something went wrong");
+    }
+  };
   return (
     <section className={styles.container}>
       <Card data={data} />

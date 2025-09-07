@@ -27,7 +27,8 @@ const signinValidation = async ({
     redirect: false,
   });
   if (res.status === 200) {
-    toast.success("با موفقیت وارد شدید");
+    toast.success("با موفقیت وارد شدید", { duration: 2000 });
+    await new Promise((resolver) => setTimeout(resolver, 2000));
     setIsLoading(false);
     return true;
   }
@@ -35,7 +36,6 @@ const signinValidation = async ({
     const errorMessage: ErrorMessage = res.error.includes("buffering timed out")
       ? "مشکلی رخ داده است"
       : null;
-    console.log(errorMessage);
     toast.error(errorMessage ?? res.error);
     setIsLoading(false);
     return false;

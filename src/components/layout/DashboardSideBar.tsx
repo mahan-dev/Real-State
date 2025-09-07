@@ -8,6 +8,8 @@ import Link from "next/link";
 import LogOutButton from "@/elements/LogOutButton";
 
 import { AiFillProfile } from "react-icons/ai";
+import { RiAccountBox2Fill } from "react-icons/ri";
+import { RiAddBoxFill } from "react-icons/ri";
 
 const DashboardSideBar = async ({ children }) => {
   const session = await getServerSession(authOptions);
@@ -24,15 +26,22 @@ const DashboardSideBar = async ({ children }) => {
         <div className={styles.sidebar__main}>
           <ul>
             <li>
-              <Link href={"/dashboard"}>حساب کاربری
-              <AiFillProfile />
+              <Link href={"/dashboard"}>
+                <RiAccountBox2Fill className={styles.icon} />
+                حساب کاربری
               </Link>
             </li>
             <li>
-              <Link href={"/dashboard/my-profiles"}>آگهی های من</Link>
+              <Link href={"/dashboard/my-profiles"}>
+                <AiFillProfile className={styles.icon} />
+                آگهی های من
+              </Link>
             </li>
             <li>
-              <Link href={"/dashboard/add"}>ثبت آگهی</Link>
+              <Link href={"/dashboard/add"}>
+                <RiAddBoxFill className={styles.icon} />
+                ثبت آگهی
+              </Link>
             </li>
           </ul>
         </div>
