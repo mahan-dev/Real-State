@@ -7,7 +7,7 @@ import styles from "@/elements/styles/logoutButton/route.module.css";
 const LogOutButton = (): JSX.Element => {
   return (
     <button className={styles.button} onClick={() => signOut()}>
-      <FiLogOut className="text-[1.3rem]" />
+      <FiLogOut />
       خروج
     </button>
   );

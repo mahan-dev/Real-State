@@ -1,28 +1,26 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 import { Profiles } from "@/helper/Dashboard-MyProfiles/UserProfiles";
 import Card from "@/modules/Card";
-import Button from "@mui/material/Button";
 
 import styles from "@/modules/styles/dashboardCard/route.module.css";
-import axios from "axios";
-import { useRouter } from "next/navigation";
+
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
 
 interface DashboardProps {
   data: Profiles;
 }
-const buttonStyles = { padding: "0 0.6rem", borderColor: "orange" };
 
 const DashboardCard = ({ data }: DashboardProps) => {
-  const editHandler = async () => {
-    try {
-      await axios.patch("/api/profile");
-    } catch (error) {
-      console.log("sd", error);
-    }
+  const router = useRouter();
+
+  const editHandler = async (id: string) => {
+    router.push(`/dashboard/my-profiles/${id}`);
   };
 
-  const router = useRouter();
   const deleteHandler = async (id: string) => {
     try {
       const res = await axios.delete<string>(`/api/profile/delete/${id}`);
@@ -36,23 +34,21 @@ const DashboardCard = ({ data }: DashboardProps) => {
     <section className={styles.container}>
       <Card data={data} />
 
-      <div className="flex justify-between gap-2 mt-2">
-        <Button
-          sx={buttonStyles}
-          variant="outlined"
-          color="primary"
-          onClick={editHandler}
+      <div className={styles.container__info}>
+        <button
+          className={styles.button__edit}
+          onClick={() => editHandler(data._id)}
         >
           ویرایش
-        </Button>
-        <Button
-          sx={buttonStyles}
-          variant="outlined"
-          color="primary"
+          <FaEdit />
+        </button>
+        <button
+          className={styles.button__delete}
           onClick={() => deleteHandler(data._id)}
         >
           حذف
-        </Button>
+          <AiFillDelete />
+        </button>
       </div>
     </section>
   );

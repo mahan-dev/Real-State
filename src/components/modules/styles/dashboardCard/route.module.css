@@ -2,3 +2,17 @@
 .container {
     @apply border-2 border-orange-300 rounded-md p-2
 }
+
+.container__info {
+    @apply flex justify-between gap-2 mt-2;
+}
+
+.button__edit, .button__delete {
+    @apply flex justify-center gap-2 py-1 w-[45%] border-2;
+}
+.button__edit {
+    @apply text-green-500 border-green-400 rounded-md;
+}
+.button__delete {
+    @apply text-red-500  border-red-400 rounded-md;
+}

@@ -1,21 +1,24 @@
 "use client";
-import { SetValueConfig, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import TextInput from "@/modules/TextInput";
 import styles from "@/templates/styles/profileAddPage/route.module.css";
 
-import { FormValues } from "@/templates/interface/Interface";
+import { FormValues, ProfileResponse } from "@/templates/interface/Interface";
 import RadioButton from "@/modules/RadioButton";
 import TextList from "@/modules/TextList";
 import Button from "@mui/material/Button";
 import CustomDatePicker from "../modules/CustomDatePicker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddHandler } from "@/helper/profileAddPage/AddHandler";
 import Loader from "@/modules/Loader";
+import axios from "axios";
 
-const ProfileAddPage = () => {
+interface ProfileProps {
+  data?: FormValues;
+}
+const ProfileAddPage = ({ data }: ProfileProps) => {
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-
   const { handleSubmit, watch, setValue, getValues, reset } =
     useForm<FormValues>({
       defaultValues: {
@@ -74,13 +77,50 @@ const ProfileAddPage = () => {
     },
   ];
 
+  const dataValidation = () => {
+    if (data) {
+      reset({
+        title: data.title,
+        description: data.description,
+        location: data.location,
+        phone: data.phone,
+        price: data.price,
+        realState: data.realState,
+        constructionDate: data.constructionDate,
+        category: data.category,
+        amenities: data.amenities || [],
+        rules: data.rules || [],
+        _id: data._id,
+      });
+    }
+  };
+  useEffect(() => {
+    if (!data) return;
+    dataValidation();
+  }, [data, reset]);
+
   const submitHandler = async (formData: FormValues) => {
-    await AddHandler(formData, { setError, reset, setLoading });
+    console.log(formData);
+    if (!data) await AddHandler(formData, { setError, reset, setLoading });
+    else {
+      try {
+        setLoading(true);
+        const { data } = await axios.patch<FormValues>(
+          "/api/profile",
+          formData
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
   };
 
   return (
     <section className="">
-      <h2 className={styles.title}>ثبت آگهی</h2>
+      <h2 className={styles.title}>{data ? "ویرایش آگهی" : "ثبت آگهی"}</h2>
 
       <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
         {inputProps.map((item) => (
@@ -129,9 +169,13 @@ const ProfileAddPage = () => {
           <div className="flex justify-center">
             <Loader />
           </div>
+        ) : data ? (
+          <Button type="submit" variant="contained" color="primary">
+            ذخیره ویرایش
+          </Button>
         ) : (
           <Button type="submit" variant="contained" color="primary">
-            ذخیره
+            ذخیره آگهی
           </Button>
         )}
       </form>

@@ -35,7 +35,7 @@
 }
 
 .icon {
-    @apply text-orange-500 text-[1.3rem] ml-2;
+    @apply text-orange-500 text-[1.5rem] ml-2 max-md:text-[1.3rem];
 }
 
 .main {

@@ -112,9 +112,9 @@ export const PATCH = async (req: Request) => {
         { status: "Failed", error: " حساب کابری پیدانشد" },
         { status: 404 }
       );
-
+ 
     if (
-      !_id ||
+      !_id||
       !title ||
       !location ||
       !description ||
@@ -124,15 +124,16 @@ export const PATCH = async (req: Request) => {
       !constructionDate ||
       !category
     )
-      return NextResponse.json(
-        {
-          status: "Failed",
-          error: "اطلاعات معتبر وارد کنید",
-        },
-        {
-          status: 422,
-        }
-      );
+    return NextResponse.json(
+      {
+        status: "Failed",
+        error: "اطلاعات معتبر وارد کنید",
+      },
+      {
+        status: 422,
+      }
+    );
+    console.log(_id)
 
     const profile = await Profile.findOne({ _id });
 
@@ -159,6 +160,8 @@ export const PATCH = async (req: Request) => {
       price,
       constructionDate,
       category,
+      amenities,
+      rules,
     });
 
     await profile.save();

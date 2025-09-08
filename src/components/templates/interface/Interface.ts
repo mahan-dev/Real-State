@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface FormData {
   email: string;
   password: string;
@@ -15,6 +17,7 @@ export interface FormValues {
   category: string;
   rules: string[];
   amenities: string[];
+  _id?: string;
 }
 
 export interface ProfileResponse extends FormValues {
@@ -24,5 +27,5 @@ export interface ProfileResponse extends FormValues {
   updatedAt: string;
   message: string;
   error: string;
-  data: object
+  data: object;
 }
