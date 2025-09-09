@@ -12,7 +12,7 @@ const MyProfilesPage = ({ profileData }: Profile) => {
 
   return (
     <>
-      {userProfile?.length > 0 ? "" : <p>آگهی پیدا نشده است</p>}
+      {userProfile?.length > 0 ? "" : <p className="text-center my-2">آگهی پیدا نشده است 🙁</p>}
 
       <div className={styles.container}>
         {userProfile?.map((item) => (

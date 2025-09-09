@@ -1,5 +1,5 @@
 .button {
-    @apply flex w-fit px-2 my-1 border border-transparent rounded-md items-center gap-2 text-red-500 transition-all duration-200 ease-linear hover:scale-105 hover:rounded-md;
+    @apply w-full flex px-2 my-1 border border-transparent rounded-md items-center gap-2 text-red-500 transition-all duration-200 ease-linear hover:scale-105 hover:rounded-md;
 
     svg {
         @apply text-[1.5rem] max-md:text-[1.3rem];

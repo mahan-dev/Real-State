@@ -12,7 +12,6 @@ const EditPage = async ({ params }: EditPageProps) => {
   const { profileId } = await params;
 
   const profile = await Profile.findOne({ _id: profileId });
-  console.log(profile);
   if (!profile) return <h2>مشکلی پیش آمده لطفا دوباره امتحان کنید</h2>;
 
   return (

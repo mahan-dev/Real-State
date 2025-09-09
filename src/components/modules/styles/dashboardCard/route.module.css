@@ -8,7 +8,7 @@
 }
 
 .button__edit, .button__delete {
-    @apply flex justify-center gap-2 py-1 w-[45%] border-2;
+    @apply flex justify-center gap-2 py-1 w-[45%] border-2 outline-none;
 }
 .button__edit {
     @apply text-green-500 border-green-400 rounded-md;

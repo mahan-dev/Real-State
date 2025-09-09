@@ -9,6 +9,8 @@ import styles from "@/modules/styles/dashboardCard/route.module.css";
 
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import toast from "react-hot-toast";
+import { DeleteHandler } from "@/helper/dashboardCard/deleteHandler";
 
 interface DashboardProps {
   data: Profiles;
@@ -22,13 +24,7 @@ const DashboardCard = ({ data }: DashboardProps) => {
   };
 
   const deleteHandler = async (id: string) => {
-    try {
-      const res = await axios.delete<string>(`/api/profile/delete/${id}`);
-      const status = res.status === 200;
-      if (status) router.refresh();
-    } catch {
-      console.log("something went wrong");
-    }
+    await DeleteHandler({id, router})
   };
   return (
     <section className={styles.container}>

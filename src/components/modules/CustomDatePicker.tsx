@@ -12,6 +12,7 @@ interface DatePickerProps {
   setProfileData: UseFormSetValue<FormValues>;
   type: keyof FormValues;
   title: string;
+  className?: string;
 }
 
 const CustomDatePicker = ({
@@ -28,12 +29,13 @@ const CustomDatePicker = ({
     <section className={styles.container}>
       <p>{title}</p>
       <DatePicker
-        className="calender"
+        className={`${styles.calender} calender` }
         inputClass={styles.container__datePicker}
         calendar={persian}
         locale={persian_fa}
         value={profileData.constructionDate}
         onChange={changeHandler}
+        editable={false}
       />
     </section>
   );

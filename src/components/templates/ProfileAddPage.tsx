@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import TextInput from "@/modules/TextInput";
 import styles from "@/templates/styles/profileAddPage/route.module.css";
 
-import { FormValues, ProfileResponse } from "@/templates/interface/Interface";
+import { FormValues } from "@/templates/interface/Interface";
 import RadioButton from "@/modules/RadioButton";
 import TextList from "@/modules/TextList";
 import Button from "@mui/material/Button";
@@ -11,7 +11,10 @@ import CustomDatePicker from "../modules/CustomDatePicker";
 import { useEffect, useState } from "react";
 import { AddHandler } from "@/helper/profileAddPage/AddHandler";
 import Loader from "@/modules/Loader";
-import axios from "axios";
+
+import { EditHandler } from "@/helper/profileAddPage/EditHandler";
+import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 interface ProfileProps {
   data?: FormValues;
@@ -86,7 +89,9 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
         phone: data.phone,
         price: data.price,
         realState: data.realState,
-        constructionDate: data.constructionDate,
+        constructionDate: data.constructionDate
+          ? new Date(data.constructionDate)
+          : new Date(),
         category: data.category,
         amenities: data.amenities || [],
         rules: data.rules || [],
@@ -99,23 +104,11 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
     dataValidation();
   }, [data, reset]);
 
+  const router: AppRouterInstance = useRouter();
+
   const submitHandler = async (formData: FormValues) => {
-    console.log(formData);
     if (!data) await AddHandler(formData, { setError, reset, setLoading });
-    else {
-      try {
-        setLoading(true);
-        const { data } = await axios.patch<FormValues>(
-          "/api/profile",
-          formData
-        );
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
+    else if (data) EditHandler({ formData, setLoading, router });
   };
 
   return (

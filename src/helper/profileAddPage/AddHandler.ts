@@ -13,8 +13,6 @@ interface AddInterface {
   reset: UseFormReset<FormValues>;
 }
 
-const notificationTimeout = async () =>
-  await new Promise((resolver) => setTimeout(resolver, 2000));
 
 export const AddHandler = async (
   formData: FormValues,
@@ -40,7 +38,6 @@ export const AddHandler = async (
     );
     if (data.message) {
       toast.success(data.message);
-      await notificationTimeout();
       setError(false)
       reset();
     }
