@@ -2,6 +2,7 @@ import React from "react";
 import styles from "@/templates/styles/homePage/route.module.css";
 import Services from "../modules/Services";
 import CategoryCard from "@/modules/CategoryCard";
+import CityCard from "@/components/modules/CityCard";
 
 const HomePage = () => {
   const services = ["خرید", "فروش", "رهن", "اجاره"];
@@ -18,9 +19,9 @@ const HomePage = () => {
 
   const categoryCard = [
     { name: "villa", title: "خانه ویلایی" },
-    { name: "villa", title: "آپارتمان" },
-    { name: "villa", title: "مغازه" },
-    { name: "villa", title: "دفترکار" },
+    { name: "apartment", title: "آپارتمان" },
+    { name: "store", title: "مغازه" },
+    { name: "office", title: "دفترکار" },
   ];
 
   return (
@@ -32,11 +33,10 @@ const HomePage = () => {
             <Services data={services} />
           </ul>
         </div>
-
-        <CategoryCard data={categoryCard} />
-
-        {/* <CategoryCard  name="villa" title="ویلا" /> */}
       </div>
+      <CategoryCard data={categoryCard} />
+
+      <CityCard data={cities} />
     </section>
   );
 };

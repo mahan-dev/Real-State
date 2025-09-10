@@ -12,6 +12,6 @@
 .description__services{
     @apply flex gap-3 mt-10;
     li {
-        @apply text-[0.9rem] leading-7 flex gap-2 items-center text-orange-500 bg-orange-500 bg-opacity-20 rounded-xl pl-4 pr-2;
+        @apply text-[0.9rem] leading-7 flex gap-2 items-center text-orange-500 bg-orange-500 bg-opacity-20 rounded-lg pl-4 pr-2;
     }
 }

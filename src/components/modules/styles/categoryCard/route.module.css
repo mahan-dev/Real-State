@@ -1,8 +1,12 @@
-.list {
-    @apply flex flex-wrap justify-center gap-6 mt-10;
+.categoryList {
+    @apply flex flex-wrap justify-center gap-6 mt-28;
 
     li {
-        @apply rounded-xl p-2 transition-all duration-200 ease-linear hover:cursor-pointer hover:rotate-6 ;
+        @apply text-orange-500 font-semibold rounded-xl p-2 transition-all duration-200 ease-linear hover:cursor-pointer hover:rotate-6 ;
         box-shadow:0 3px 12px rgba(244, 125, 21, 0.4);
     }
+}
+
+.categoryList__image{
+    @apply rounded-xl;
 }

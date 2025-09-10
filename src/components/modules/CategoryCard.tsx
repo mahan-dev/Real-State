@@ -14,17 +14,17 @@ interface CategoryItem {
 const CategoryCard = ({ data }: CategoryCardProps) => {
   console.log(data);
   return (
-    <ul className={styles.list}>
-      {data.map((item, index) => (
-        <li key={index}>
-          {item.name}
+    <ul className={styles.categoryList}>
+      {data.map((item) => (
+        <li key={item.name}>
           <Image
+          className={styles.categoryList__image}
             alt={item.name}
             src={`/images/${item.name}.png`}
             width={240}
             height={144}
           />
-          <p>{item.title}</p>
+          <p className="text-center my-3">{item.title}</p>
         </li>
       ))}
     </ul>

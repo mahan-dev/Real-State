@@ -1,0 +1,20 @@
+
+
+.cities {
+    @apply flex flex-col items-center my-32 ;
+    h2 {
+        @apply text-orange-500 font-semibold;
+        font-size: clamp(1.2rem, 1vw + 1.2rem, 2rem);
+    }
+}
+
+.cities__list{
+    @apply flex flex-wrap gap-4 justify-center  mt-10;
+
+    li {
+        @apply w-[240px] text-orange-500 flex gap-3 justify-center items-center p-3 bg-orange-500 bg-opacity-20 rounded-lg ;
+        svg{
+            @apply text-[1.2rem]
+        }
+    }
+}
