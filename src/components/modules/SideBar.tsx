@@ -16,33 +16,33 @@ const SideBar = ({ setIsMenu }: SideBarProps) => {
 
     if (li) {
       setIsMenu(false);
+      document.body.style.overflow = "auto";
     }
   };
   return (
     <>
-    <div className={styles.sidebar__main}>
-
-      <ul onClick={setIsMenu && clickHandler}>
-        <li>
-          <Link href={"/dashboard"}>
-            <RiAccountBox2Fill className={styles.icon} />
-            حساب کاربری
-          </Link>
-        </li>
-        <li>
-          <Link href={"/dashboard/my-profiles"}>
-            <AiFillProfile className={styles.icon} />
-            آگهی های من
-          </Link>
-        </li>
-        <li>
-          <Link href={"/dashboard/add"}>
-            <RiAddBoxFill className={styles.icon} />
-            ثبت آگهی
-          </Link>
-        </li>
-      </ul>
-    </div>
+      <div className={styles.sidebar__main}>
+        <ul onClick={setIsMenu && clickHandler}>
+          <li>
+            <Link href={"/dashboard"}>
+              <RiAccountBox2Fill className={styles.icon} />
+              حساب کاربری
+            </Link>
+          </li>
+          <li>
+            <Link href={"/dashboard/my-profiles"}>
+              <AiFillProfile className={styles.icon} />
+              آگهی های من
+            </Link>
+          </li>
+          <li>
+            <Link href={"/dashboard/add"}>
+              <RiAddBoxFill className={styles.icon} />
+              ثبت آگهی
+            </Link>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };

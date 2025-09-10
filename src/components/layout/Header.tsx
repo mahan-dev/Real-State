@@ -23,12 +23,18 @@ const Header = () => {
       if (ref.current.contains(target) || iconRef.current.contains(target))
         return;
       setIsMenu(false);
+      document.body.style.overflow = "auto";
     };
 
     document.addEventListener("click", clickOutside);
     return () => {
       document.removeEventListener("click", clickOutside);
     };
+  };
+
+  const toggleHandler = () => {
+    setIsMenu(true);
+    document.body.style.overflow = "hidden";
   };
 
   useEffect(() => {
@@ -59,15 +65,13 @@ const Header = () => {
           <div
             ref={iconRef}
             className="cursor-pointer sm:hidden"
-            onClick={() => {
-              setIsMenu((prev) => !prev);
-            }}
+            onClick={toggleHandler}
           >
             <HiOutlineMenuAlt1 className="text-[1.5rem]" />
           </div>
         </>
       )}
-      <MenuNavigation ref={ref}  isMenu={isMenu} setIsMenu={setIsMenu} />
+      <MenuNavigation ref={ref} isMenu={isMenu} setIsMenu={setIsMenu} />
     </header>
   );
 };

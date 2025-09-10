@@ -9,7 +9,7 @@ const Layout = ({ children }: childrenProps): JSX.Element => {
   return (
     <>
       <Header />
-      <section className="min-h-[850px]">{children}</section>
+      <section className="min-h-[900px]">{children}</section>
 
       <Footer />
     </>

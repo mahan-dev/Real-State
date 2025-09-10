@@ -1,0 +1,17 @@
+.banner {
+    @apply flex flex-col items-center mt-36;
+}
+
+
+
+.banner__description h1 {
+    @apply  text-center font-bold text-orange-500;
+    font-size: clamp(1.2rem , 1vw + 1.2rem, 2.5rem)
+}
+
+.description__services{
+    @apply flex gap-3 mt-10;
+    li {
+        @apply text-[0.9rem] leading-7 flex gap-2 items-center text-orange-500 bg-orange-500 bg-opacity-20 rounded-xl pl-4 pr-2;
+    }
+}

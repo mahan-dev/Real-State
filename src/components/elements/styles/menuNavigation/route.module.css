@@ -1,3 +1,8 @@
+.menu {
+
+    @apply fixed top-0 left-0 w-[200px] transition-all duration-150 ease-linear h-full bg-white z-10;
+}
+
 .closeIcon {
-    @apply text-[1.5rem] text-orange-500 cursor-pointer m-4 transition-all duration-100 ease-linear hover:bg-orange-500 hover:bg-opacity-25 hover:rounded-md;
+    @apply text-[1.5rem] text-orange-500 cursor-pointer mx-1 mt-5 transition-all duration-100 ease-linear hover:bg-orange-500 hover:bg-opacity-25 hover:rounded-md;
 }

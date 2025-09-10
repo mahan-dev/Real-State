@@ -11,17 +11,18 @@ interface MenuProps {
 }
 
 const MenuNavigation = ({ ref, isMenu, setIsMenu }: MenuProps) => {
-  const menuStyles =
-    "fixed top-0 left-0 w-[200px]  transition-all duration-150 ease-linear  h-full bg-white z-50 ";
-
+  const closeHandler = () => {
+    setIsMenu(false);
+    document.body.style.overflow = "auto";
+  };
   return (
     <div
       ref={ref}
-      className={` ${menuStyles} ${
+      className={` ${styles.menu} ${
         isMenu ? "translate-x-0" : "-translate-x-full"
       }  `}
     >
-      <CgClose className={styles.closeIcon} onClick={() => setIsMenu(false)} />
+      <CgClose className={styles.closeIcon} onClick={closeHandler} />
 
       <SideBar setIsMenu={setIsMenu} />
       <LogOutButton />
