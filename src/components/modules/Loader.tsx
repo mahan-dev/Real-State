@@ -1,12 +1,15 @@
 import React, { JSX } from "react";
 import { ThreeDots } from "react-loader-spinner";
 
-const Loader = (): JSX.Element => {
+interface LoaderProps {
+  loader?: boolean;
+}
+const Loader = ({ loader }: LoaderProps): JSX.Element => {
   return (
     <>
       <ThreeDots
-        height="80"
-        width="80"
+        height={loader ? "20" : "80"}
+        width={loader ? "40" : "80"}
         color="#f97316"
         radius="9"
         ariaLabel="three-dots-loading"

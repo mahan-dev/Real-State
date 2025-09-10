@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { Profiles } from "@/helper/Dashboard-MyProfiles/UserProfiles";
 import Card from "@/modules/Card";
 
@@ -9,14 +8,16 @@ import styles from "@/modules/styles/dashboardCard/route.module.css";
 
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
-import toast from "react-hot-toast";
 import { DeleteHandler } from "@/helper/dashboardCard/deleteHandler";
+import Loader from "@/modules/Loader";
 
 interface DashboardProps {
   data: Profiles;
 }
 
 const DashboardCard = ({ data }: DashboardProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   const router = useRouter();
 
   const editHandler = async (id: string) => {
@@ -24,7 +25,7 @@ const DashboardCard = ({ data }: DashboardProps) => {
   };
 
   const deleteHandler = async (id: string) => {
-    await DeleteHandler({id, router})
+    await DeleteHandler({ id, router, setLoading });
   };
   return (
     <section className={styles.container}>
@@ -42,8 +43,14 @@ const DashboardCard = ({ data }: DashboardProps) => {
           className={styles.button__delete}
           onClick={() => deleteHandler(data._id)}
         >
-          حذف
-          <AiFillDelete />
+          {loading ? (
+            <Loader loader={true} />
+          ) : (
+            <>
+              حذف
+              <AiFillDelete />
+            </>
+          )}
         </button>
       </div>
     </section>

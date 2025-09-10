@@ -4,12 +4,8 @@ import styles from "@/components/layout/styles/dashboard-sidebar/route.module.cs
 import { CgProfile } from "react-icons/cg";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import Link from "next/link";
 import LogOutButton from "@/elements/LogOutButton";
-
-import { AiFillProfile } from "react-icons/ai";
-import { RiAccountBox2Fill } from "react-icons/ri";
-import { RiAddBoxFill } from "react-icons/ri";
+import SideBar from "@/modules/SideBar";
 
 const DashboardSideBar = async ({ children }) => {
   const session = await getServerSession(authOptions);
@@ -24,26 +20,7 @@ const DashboardSideBar = async ({ children }) => {
         </div>
 
         <div className={styles.sidebar__main}>
-          <ul>
-            <li>
-              <Link href={"/dashboard"}>
-                <RiAccountBox2Fill className={styles.icon} />
-                حساب کاربری
-              </Link>
-            </li>
-            <li>
-              <Link href={"/dashboard/my-profiles"}>
-                <AiFillProfile className={styles.icon} />
-                آگهی های من
-              </Link>
-            </li>
-            <li>
-              <Link href={"/dashboard/add"}>
-                <RiAddBoxFill className={styles.icon} />
-                ثبت آگهی
-              </Link>
-            </li>
-          </ul>
+          <SideBar />
         </div>
         <LogOutButton />
       </div>

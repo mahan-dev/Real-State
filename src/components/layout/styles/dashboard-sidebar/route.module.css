@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-    @apply flex flex-col flex-shrink-0 w-[230px] h-fit py-2 px-4 rounded-md;
+    @apply flex flex-col flex-shrink-0 w-[230px] h-fit py-2 px-4 rounded-md max-sm:hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 
 }

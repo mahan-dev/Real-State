@@ -1,5 +1,4 @@
 .container {
 
-    @apply grid gap-2 ml-4;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    @apply flex flex-wrap gap-4  max-[817px]:place-content-center;
 }
