@@ -1,49 +1,35 @@
-"use client";
 import React from "react";
+import styles from "@/modules/styles/sideBar/route.module.css";
+import { FaFilter } from "react-icons/fa6";
 import Link from "next/link";
-import { RiAccountBox2Fill, RiAddBoxFill } from "react-icons/ri";
-import { AiFillProfile } from "react-icons/ai";
-import styles from "@/components/layout/styles/dashboard-sidebar/route.module.css";
 
-interface SideBarProps {
-  setIsMenu?: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const SideBar = () => {
 
-const SideBar = ({ setIsMenu }: SideBarProps) => {
-  const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
-    const li = target.closest("li");
+    const queries = [
+        {villa: "ویلا"},
+        {apartment: "آپارتمان"},
+        {office: "دفتر"},
+        {store: "مغازه"},
+    ]
 
-    if (li) {
-      setIsMenu(false);
-      document.body.style.overflow = "auto";
-    }
-  };
   return (
-    <>
-      <div className={styles.sidebar__main}>
-        <ul onClick={setIsMenu && clickHandler}>
-          <li>
-            <Link href={"/dashboard"}>
-              <RiAccountBox2Fill className={styles.icon} />
-              حساب کاربری
+    <aside className={styles.aside}>
+      <p>
+        <FaFilter className="text-orange-500" />
+        دسته بندی
+      </p>
+      <Link href={"/buy-residential"}>همه</Link>
+      {
+        queries.map((item, index) => (
+            <Link key={index} href={{
+                pathname:"/buy-residential",
+                query:{category: Object.keys(item)}
+            }}>
+                {Object.values(item)}
             </Link>
-          </li>
-          <li>
-            <Link href={"/dashboard/my-profiles"}>
-              <AiFillProfile className={styles.icon} />
-              آگهی های من
-            </Link>
-          </li>
-          <li>
-            <Link href={"/dashboard/add"}>
-              <RiAddBoxFill className={styles.icon} />
-              ثبت آگهی
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </>
+        ))
+      }
+    </aside>
   );
 };
 

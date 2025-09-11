@@ -1,6 +1,6 @@
 import React from "react";
 import { CgClose } from "react-icons/cg";
-import SideBar from "@/modules/SideBar";
+import SideBar from "@/components/modules/MenuBar";
 import styles from "@/elements/styles/menuNavigation/route.module.css";
 import LogOutButton from "@/elements/LogOutButton";
 

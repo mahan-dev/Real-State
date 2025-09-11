@@ -32,6 +32,6 @@
       "@/helper/*": ["src/helper/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js", "src/utils/auth.ts", "src/models/User.ts", "src/app/dashboard/my-profiles/[profileId]/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js", "src/utils/auth.ts", "src/models/User.ts", "src/app/dashboard/my-profiles/[profileId]/page.tsx", "src/app/buy-residential/page.tsx"],
   "exclude": ["node_modules"]
 }

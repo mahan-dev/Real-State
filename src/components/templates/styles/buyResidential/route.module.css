@@ -4,10 +4,17 @@
 }
 
 .aside{ 
-    @apply w-[200px] flex-shrink-0 ml-10 rounded-md p-2 ;
-    box-shadow: 0 4px 15px rgb(0,0,0,0.1);
+    @apply h-fit flex-shrink-0 ml-10 rounded-md p-2 ;
+     box-shadow:0 3px 12px rgba(244, 125, 21, 0.4);
+     a {
+        @apply text-gray-600 mt-1;
+     }
 }
 
 .main {
     @apply w-full flex flex-wrap gap-3 max-[790px]:justify-center;
+}
+
+.notfound{
+    @apply h-fit text-red-500 p-2 bg-red-500 bg-opacity-30 rounded-lg;
 }
