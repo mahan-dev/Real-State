@@ -1,6 +1,6 @@
 
 .container {
-    @apply  w-[250px]  border-2 border-orange-300 rounded-md p-2
+    @apply  border-2 border-orange-300 rounded-md p-2
 }
 
 .container__info {

@@ -1,0 +1,13 @@
+
+.container{
+    @apply flex  justify-between mt-32 ;
+}
+
+.aside{ 
+    @apply w-[200px] flex-shrink-0 ml-10 rounded-md p-2 ;
+    box-shadow: 0 4px 15px rgb(0,0,0,0.1);
+}
+
+.main {
+    @apply w-full flex flex-wrap gap-3 max-[790px]:justify-center;
+}

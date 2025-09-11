@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Profiles } from "@/helper/Dashboard-MyProfiles/UserProfiles";
 import Card from "@/modules/Card";
 
 import styles from "@/modules/styles/dashboardCard/route.module.css";
@@ -10,9 +9,10 @@ import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { DeleteHandler } from "@/helper/dashboardCard/deleteHandler";
 import Loader from "@/modules/Loader";
+import { ProfileTypes } from "@/models/interface/ProfileTypes";
 
 interface DashboardProps {
-  data: Profiles;
+  data: ProfileTypes;
 }
 
 const DashboardCard = ({ data }: DashboardProps) => {

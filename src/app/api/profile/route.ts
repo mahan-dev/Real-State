@@ -114,9 +114,9 @@ export const PATCH = async (req: Request) => {
         { status: "Failed", error: " حساب کابری پیدانشد" },
         { status: 404 }
       );
- 
+
     if (
-      !_id||
+      !_id ||
       !title ||
       !location ||
       !description ||
@@ -126,16 +126,16 @@ export const PATCH = async (req: Request) => {
       !constructionDate ||
       !category
     )
-    return NextResponse.json(
-      {
-        status: "Failed",
-        error: "اطلاعات معتبر وارد کنید",
-      },
-      {
-        status: 422,
-      }
-    );
-    console.log(_id)
+      return NextResponse.json(
+        {
+          status: "Failed",
+          error: "اطلاعات معتبر وارد کنید",
+        },
+        {
+          status: 422,
+        }
+      );
+    console.log(_id);
 
     const profile = await Profile.findOne({ _id });
 
@@ -179,6 +179,19 @@ export const PATCH = async (req: Request) => {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
+      { status: "Failed", error: "مشکلی در سرور رخ داده است" },
+      { status: 500 }
+    );
+  }
+};
+
+export const GET = async (req: Request) => {
+  try {
+    await connectDb();
+    const profile = await Profile.find().select("-userId");
+    return NextResponse.json({ status: "Success", profile });
+  } catch {
+    NextResponse.json(
       { status: "Failed", error: "مشکلی در سرور رخ داده است" },
       { status: 500 }
     );

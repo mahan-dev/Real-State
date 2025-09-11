@@ -1,4 +1,4 @@
 .container {
 
-    @apply flex flex-wrap gap-4  max-[817px]:place-content-center;
+    @apply flex flex-wrap gap-4  max-[856px]:justify-center;
 }
