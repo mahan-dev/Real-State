@@ -1,0 +1,10 @@
+
+
+.list {
+    @apply flex   marker:text-orange-500;
+
+    ::before {
+        content: "•";
+        @apply text-orange-500 pl-2;
+    }
+}

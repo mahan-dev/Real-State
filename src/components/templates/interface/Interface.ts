@@ -1,5 +1,3 @@
-import { Types } from "mongoose";
-
 export interface FormData {
   email: string;
   password: string;
@@ -22,10 +20,26 @@ export interface FormValues {
 
 export interface ProfileResponse extends FormValues {
   _id: string;
-  userId: string;
+  userId?: string;
   createdAt: string;
   updatedAt: string;
   message: string;
   error: string;
-  data: object;
+}
+export interface ProfileDoc {
+  data: {
+    _id: string;
+    title: string;
+    description: string;
+    location: string;
+    phone: string;
+    price: string;
+    realState: string;
+    constructionDate: object;
+    category: string;
+    rules: string[];
+    amenities: string[];
+    createdAt: object;
+    updatedAt: object;
+  };
 }

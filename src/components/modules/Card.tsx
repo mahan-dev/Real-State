@@ -9,14 +9,15 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import styles from "@/modules/styles/card/route.module.css";
 import { sp } from "@/utils/replaceNumber";
 import { ProfileTypes } from "@/models/interface/ProfileTypes";
+import Link from "next/link";
 
 interface CardProps {
   data: ProfileTypes;
 }
 
-
 const Card = ({ data }: CardProps) => {
-  const { title, category, location, price } = data;
+  const { _id, title, category, location, price } = data;
+  console.log(_id);
 
   const icons = {
     store: <PiStorefrontDuotone />,
@@ -33,12 +34,12 @@ const Card = ({ data }: CardProps) => {
         <TiLocation />
         {location}
       </div>
-      <span className={styles.price}>{ price && sp(price)} تومان</span>
+      <span className={styles.price}>{price && sp(price)} تومان</span>
 
-      <div className={styles.footer}>
-        <span>مشاهده آگهی</span>
+      <Link href={`/buy-residential/${_id}`} className={styles.footer}>
+        مشاهده آگهی
         <FaArrowLeftLong />
-      </div>
+      </Link>
     </section>
   );
 };

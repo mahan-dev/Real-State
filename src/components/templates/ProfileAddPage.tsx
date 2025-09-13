@@ -20,8 +20,10 @@ interface ProfileProps {
   data?: FormValues;
 }
 const ProfileAddPage = ({ data }: ProfileProps) => {
+  
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+
   const { handleSubmit, watch, setValue, getValues, reset } =
     useForm<FormValues>({
       defaultValues: {

@@ -3,17 +3,20 @@ import { profileHandler } from "@/helper/buyResidential/profileHandler";
 import connectDb from "@/utils/connectDb";
 import React from "react";
 
-const BuyResidential = async ({ searchParams }) => {
-  const searchQuery = searchParams;
+interface BuyResidentialProps {
+  searchParams: { category: string };
+}
+
+const BuyResidential = async ({ searchParams }:BuyResidentialProps) => {
+  const { category } = await searchParams;
 
   await connectDb();
   const res = await profileHandler();
 
   let finalData = res;
-  if (searchQuery.category) {
-    finalData = finalData.filter(
-      (item) => item.category === searchQuery.category
-    );
+
+  if (category) {
+    finalData = finalData.filter((item) => item.category === category);
   }
 
   if (res) return <BuyResidentialPage data={finalData} />;

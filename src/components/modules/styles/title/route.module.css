@@ -1,0 +1,7 @@
+.title {
+    @apply text-[1.3rem] text-orange-500;
+}
+
+.title__h3{
+    @apply text-orange-500 pb-2 mt-8 mb-4 border-b-2 border-gray-300;
+}

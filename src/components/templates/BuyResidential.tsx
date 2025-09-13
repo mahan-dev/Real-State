@@ -9,7 +9,6 @@ interface ResidentialProps {
 }
 
 const BuyResidentialPage = ({ data }: ResidentialProps) => {
-  console.log(data);
   return (
     <section className={styles.container}>
       <div className={styles.aside}>

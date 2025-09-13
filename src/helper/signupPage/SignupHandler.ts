@@ -34,7 +34,6 @@ const SignupValidation = async ({
     const data = res.data;
     if (res.status === 201) {
       toast.success("حساب کاربری ایجاد شد");
-      await new Promise((resolver) => setTimeout(resolver, 2000));
       setForm({
         email: "",
         password: "",

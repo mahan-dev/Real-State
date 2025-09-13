@@ -28,7 +28,6 @@ const signinValidation = async ({
   });
   if (res.status === 200) {
     toast.success("با موفقیت وارد شدید", { duration: 2000 });
-    await new Promise((resolver) => setTimeout(resolver, 2000));
     setIsLoading(false);
     return true;
   }

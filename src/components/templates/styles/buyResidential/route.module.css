@@ -12,7 +12,7 @@
 }
 
 .main {
-    @apply w-full flex flex-wrap gap-3 max-[790px]:justify-center;
+    @apply w-full mt-2 flex flex-wrap gap-3 max-[1006px]:justify-center;
 }
 
 .notfound{
