@@ -15,4 +15,5 @@ export interface ProfileTypes extends Document {
   userId: object;
   createdAt: Date;
   updatedAt: Date;
+  published: boolean;
 }

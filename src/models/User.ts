@@ -5,6 +5,7 @@ interface UserInterface extends Document {
   password: string;
   createdAt: Date;
   updatedAt: Date;
+  role: string;
 }
 
 export const userSchema = new Schema<UserInterface>({
@@ -28,6 +29,10 @@ export const userSchema = new Schema<UserInterface>({
     type: Date,
     default: () => Date.now(),
   },
+  role: {
+    type: String,
+    default: "USER"
+  }
 });
 
 const User: Model<UserInterface> =

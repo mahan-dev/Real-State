@@ -19,9 +19,9 @@ const ProfileSchema = new Schema<ProfileTypes>(
       required: true,
       type: String,
     },
-    price:{ 
+    price: {
       required: true,
-      type:String
+      type: String,
     },
     realState: {
       required: true,
@@ -47,6 +47,10 @@ const ProfileSchema = new Schema<ProfileTypes>(
     userId: {
       type: Schema.Types.ObjectId,
       ref: "RealStateDb",
+    },
+    published: {
+      type: Boolean,
+      default: false
     },
   },
   {
