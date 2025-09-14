@@ -13,6 +13,7 @@ import {
 } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaRegCalendar } from "react-icons/fa";
+import ShareButton from "@/elements/ShareButton";
 
 const SideBar = ({ phone, price, category, constructionDate }) => {
   const formattedDate = new Date(constructionDate).toLocaleDateString("fa-IR");
@@ -35,6 +36,8 @@ const SideBar = ({ phone, price, category, constructionDate }) => {
           {e2p(phone)}
         </p>
       </div>
+
+      <ShareButton />
       <div className={styles.realState__price}>
         <p>
           {icons[category]}

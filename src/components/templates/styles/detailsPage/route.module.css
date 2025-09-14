@@ -19,5 +19,5 @@
 }
 
 .aside {
-    @apply w-[15%] flex flex-col gap-6 ;
+    @apply w-[15%] flex flex-col gap-4 ;
 }

@@ -3,7 +3,7 @@
 
 .container__textarea{
     @apply w-[250px] outline-none p-3 border-2 rounded-lg  max-h-[220px];
-    box-shadow:  0 0px 15px rgba(0,0,0,0.12);
+    box-shadow:  0 0 15px rgba(0,0,0,0.12);
      &:hover,
     &:focus
      {

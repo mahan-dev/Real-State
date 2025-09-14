@@ -1,6 +1,6 @@
 .realState {
 
-    box-shadow: 0 3px 12px rgba(244, 125, 21, 0.4);
+    box-shadow: 0 0 12px rgba(244, 125, 21, 0.4);
 
     @apply w-full h-fit text-[1rem] py-4 flex flex-col gap-2 items-center rounded-md;
 
@@ -23,7 +23,7 @@
 
 
 .realState__price {
-    box-shadow: 0 3px 12px rgba(244, 125, 21, 0.4);
+    box-shadow: 0 0 12px rgba(244, 125, 21, 0.4);
     @apply text-[0.9rem] text-gray-500 px-2 py-4 flex flex-col gap-3 items-center rounded-md;
 
     svg {
