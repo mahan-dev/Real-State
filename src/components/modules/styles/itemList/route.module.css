@@ -1,7 +1,7 @@
 
 
 .list {
-    @apply flex   marker:text-orange-500;
+    @apply flex flex-col gap-1  marker:text-orange-500;
 
     ::before {
         content: "•";

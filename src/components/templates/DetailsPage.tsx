@@ -4,9 +4,22 @@ import styles from "@/templates/styles/detailsPage/route.module.css";
 import Title from "@/modules/Title";
 import { TiLocation } from "react-icons/ti";
 import ItemList from "@/modules/ItemList";
+import SideBar from "@/modules/DetailSideBar";
 
 const DetailsPage = ({ data }: ProfileDoc) => {
-  const { title, description, location, amenities, rules } = data;
+  const {
+    title,
+    description,
+    location,
+    amenities,
+    rules,
+    phone,
+    realState,
+    price,
+    category,
+    constructionDate,
+  } = data;
+
   return (
     <section className={styles.container}>
       <div className={styles.main}>
@@ -20,12 +33,18 @@ const DetailsPage = ({ data }: ProfileDoc) => {
         <p className={styles.title__description}>{description}</p>
         <Title Tag="h3">امکانات</Title>
         <ItemList data={amenities} />
-        
+
         <Title Tag="h3">قوانین</Title>
         <ItemList data={rules} />
-
       </div>
-      <div className={styles.aside}></div>
+      <div className={styles.aside}>
+        <SideBar
+          phone={phone}
+          price={price}
+          category={category}
+          constructionDate={constructionDate}
+        />
+      </div>
     </section>
   );
 };

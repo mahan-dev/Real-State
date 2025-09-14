@@ -1,29 +1,13 @@
-import React from "react";
+import React, { JSX } from "react";
 import styles from "@/templates/styles/homePage/route.module.css";
+
 import Services from "../modules/Services";
 import CategoryCard from "@/modules/CategoryCard";
 import CityCard from "@/components/modules/CityCard";
 
-const HomePage = () => {
-  const services = ["خرید", "فروش", "رهن", "اجاره"];
-  const cities = [
-    "تهران",
-    "سنندج",
-    "کرمانشاه",
-    "اهواز",
-    "مشهد",
-    "اصفهان",
-    "شیراز",
-    "خرم آباد",
-  ];
+import { categoryCard, cities, services } from "@/templates/constants/const";
 
-  const categoryCard = [
-    { name: "villa", title: "خانه ویلایی" },
-    { name: "apartment", title: "آپارتمان" },
-    { name: "store", title: "مغازه" },
-    { name: "office", title: "دفترکار" },
-  ];
-
+const HomePage = (): JSX.Element => {
   return (
     <section>
       <div className={styles.banner}>

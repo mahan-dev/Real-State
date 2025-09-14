@@ -1,0 +1,45 @@
+.realState {
+
+    box-shadow: 0 3px 12px rgba(244, 125, 21, 0.4);
+
+    @apply w-full h-fit text-[1rem] py-4 flex flex-col gap-2 items-center rounded-md;
+
+    span {
+        @apply mt-2
+    }
+
+    svg {
+        @apply text-[2rem] text-orange-500;
+    }
+}
+
+.realsState__info {
+    @apply text-[0.9rem] flex items-center gap-2 text-gray-500;
+
+    svg {
+        @apply text-[1.5rem]
+    }
+}
+
+
+.realState__price {
+    box-shadow: 0 3px 12px rgba(244, 125, 21, 0.4);
+    @apply text-[0.9rem] text-gray-500 px-2 py-4 flex flex-col gap-3 items-center rounded-md;
+
+    svg {
+        @apply text-[1.6rem] text-orange-500;
+    }
+}
+
+.realState__price p {
+    @apply flex items-center gap-2;
+}
+
+
+.price__date {
+    @apply flex items-center;
+
+    svg {
+        @apply text-[1.4rem];
+    }
+}

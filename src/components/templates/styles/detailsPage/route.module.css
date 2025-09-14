@@ -1,21 +1,23 @@
-
 .container {
-    @apply flex gap-4;
+    @apply flex gap-8 mt-12;
 }
+
 .main {
-    @apply w-[80%] mt-12;
+    @apply w-[85%];
 }
+
 .main__location {
-    @apply w-fit flex items-center text-gray-600 bg-orange-500 bg-opacity-20 rounded-md px-2 py-1;
-    svg{
-        @apply ml-1;
-    } 
+    @apply w-fit mt-2 flex  text-gray-600 bg-orange-500 bg-opacity-20 rounded-md px-2 py-1;
+
+    svg {
+        @apply text-[1.3rem] ml-1;
+    }
 }
 
 .title__description {
-    @apply text-gray-800;
+    @apply text-gray-800 text-justify;
 }
 
-.aside{
-    @apply w-[20%]
+.aside {
+    @apply w-[15%] flex flex-col gap-6 ;
 }
