@@ -1,17 +1,11 @@
 import React from "react";
-import styles from "@/modules/styles/sideBar/route.module.css";
-import { FaFilter } from "react-icons/fa6";
 import Link from "next/link";
+import { FaFilter } from "react-icons/fa6";
+import styles from "@/modules/styles/sideBar/route.module.css";
+
+import { categories } from "@/constants/const";
 
 const SideBar = () => {
-
-    const queries = [
-        {villa: "ویلا"},
-        {apartment: "آپارتمان"},
-        {office: "دفتر"},
-        {store: "مغازه"},
-    ]
-
   return (
     <aside className={styles.aside}>
       <p>
@@ -19,16 +13,17 @@ const SideBar = () => {
         دسته بندی
       </p>
       <Link href={"/buy-residential"}>همه</Link>
-      {
-        queries.map((item, index) => (
-            <Link key={index} href={{
-                pathname:"/buy-residential",
-                query:{category: Object.keys(item)}
-            }}>
-                {Object.values(item)}
-            </Link>
-        ))
-      }
+      {Object.keys(categories).map((item, index) => (
+        <Link
+          key={index}
+          href={{
+            pathname: "/buy-residential",
+            query: { category: item },
+          }}
+        >
+          {categories[item]}
+        </Link>
+      ))}
     </aside>
   );
 };

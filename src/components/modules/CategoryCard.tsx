@@ -2,33 +2,26 @@ import React from "react";
 import Image from "next/image";
 import styles from "@/modules/styles/categoryCard/route.module.css";
 import Link from "next/link";
+import { categories } from "@/constants/const";
 
 interface CategoryCardProps {
-  data: CategoryItem[];
-}
-
-interface CategoryItem {
-  name: string;
-  title: string;
+  data: { [key: string]: string }[];
 }
 
 const CategoryCard = ({ data }: CategoryCardProps) => {
-  console.log(data);
   return (
     <ul className={styles.categoryList}>
-      {data.map((item) => (
-        <li key={item.name}>
-          <Link
-            href={`/buy-residential?category=${item.name}`}
-          >
+      {Object.keys(data).map((item) => (
+        <li key={item}>
+          <Link href={`/buy-residential?category=${item}`}>
             <Image
               className={styles.categoryList__image}
-              alt={item.name}
-              src={`/images/${item.name}.png`}
+              alt={item}
+              src={`/images/${item}.png`}
               width={240}
               height={144}
             />
-            <p className="text-center my-3">{item.title}</p>
+            <p className="text-center my-3">{categories[item]}</p>
           </Link>
         </li>
       ))}

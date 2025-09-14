@@ -5,7 +5,7 @@ import Services from "../modules/Services";
 import CategoryCard from "@/modules/CategoryCard";
 import CityCard from "@/components/modules/CityCard";
 
-import { categoryCard, cities, services } from "@/templates/constants/const";
+import { categories, cities, services } from "@/constants/const";
 
 const HomePage = (): JSX.Element => {
   return (
@@ -18,7 +18,7 @@ const HomePage = (): JSX.Element => {
           </ul>
         </div>
       </div>
-      <CategoryCard data={categoryCard} />
+      <CategoryCard data={categories} />
 
       <CityCard data={cities} />
     </section>

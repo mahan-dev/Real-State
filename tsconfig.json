@@ -29,9 +29,10 @@
       "@/elements/*": ["src/components/elements/*"],
       "@/api/*": ["src/app/api/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/helper/*": ["src/helper/*"]
+      "@/helper/*": ["src/helper/*"],
+      "@/constants/*": ["src/constants/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js", "src/utils/auth.ts", "src/models/User.ts", "src/app/dashboard/my-profiles/[profileId]/page.tsx", "src/app/buy-residential/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js", "src/utils/auth.ts", "src/models/User.ts", "src/app/dashboard/my-profiles/[profileId]/page.tsx", "src/app/buy-residential/page.tsx", "src/constants/const.ts"],
   "exclude": ["node_modules"]
 }
