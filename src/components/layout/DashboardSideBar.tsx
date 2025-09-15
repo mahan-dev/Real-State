@@ -2,8 +2,6 @@ import React from "react";
 import styles from "@/components/layout/styles/dashboard-sidebar/route.module.css";
 
 import { CgProfile } from "react-icons/cg";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import LogOutButton from "@/elements/LogOutButton";
 import SideBar from "@/components/modules/MenuBar";
 
@@ -18,19 +16,17 @@ const DashboardSideBar = async ({
   role,
   email,
 }: DashboardSideBarProps) => {
-  const session = await getServerSession(authOptions);
-  const userEmail = session?.user.email;
-
   return (
     <section className={styles.container}>
       <div className={styles.sidebar}>
         <div className={styles.sidebar__header}>
-          <CgProfile />
-          <p className="break-all">{userEmail ? userEmail : "nothing found"}</p>
+          <CgProfile className="shrink-0" />
+          <span className="mt-1">{role === "ADMIN" && "ادمین"}</span>
+          <p>{email ? email : "nothing found"}</p>
         </div>
 
         <div className={styles.sidebar__main}>
-          <SideBar />
+          <SideBar role={role} />
         </div>
         <LogOutButton />
       </div>

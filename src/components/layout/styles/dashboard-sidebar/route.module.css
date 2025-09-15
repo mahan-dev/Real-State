@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-    @apply flex flex-col flex-shrink-0 w-[230px] h-fit py-2 px-4 rounded-md max-sm:hidden;
+    @apply flex flex-col flex-shrink-0 w-[180px] h-fit py-2 px-4 rounded-md max-sm:hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 
 }
@@ -17,12 +17,17 @@
     }
 
     p {
-        @apply text-gray-500 h-[50px] overflow-hidden border-b-2 border-[#c4c4c4]
+        @apply flex-shrink-0 text-[1rem] text-gray-500 break-all h-[50px] overflow-hidden border-b-2 border-[#c4c4c4]
     }
+
+    span {
+        @apply text-gray-500;
+    }
+
 }
 
 .sidebar__main {
-    @apply mt-4;
+    @apply mt-2;
 
     ul li {
         @apply flex text-orange-500 cursor-pointer px-2 py-1 rounded-md transition-all duration-150 ease-linear hover:mr-2 hover:bg-orange-500 hover:bg-opacity-15 hover:px-2 hover:py-1;

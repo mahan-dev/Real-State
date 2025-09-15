@@ -73,15 +73,12 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
     else if (data) EditHandler({ formData, setLoading, router });
   };
 
-
- 
-
   return (
     <section className="">
       <h2 className={styles.title}>{data ? "ویرایش آگهی" : "ثبت آگهی"}</h2>
 
       <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
-        {TextInputProps.map(({title, name, textarea}) => (
+        {TextInputProps.map(({ title, name, textarea }) => (
           <TextInput
             key={name}
             profileData={profileData}
