@@ -1,4 +1,18 @@
 .container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    @apply grid place-content-center gap-4 mt-2;
 
-    @apply flex flex-wrap gap-4  max-[856px]:justify-center;
+}
+
+.container-element{
+   grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+   @apply grid place-content-center gap-4
+}
+
+@media only screen and (min-width: 768px) {
+    
+    .container-element {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+        @apply grid place-content-start gap-4 mt-2  ;
+    }
 }

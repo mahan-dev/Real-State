@@ -5,25 +5,42 @@ import styles from "@/modules/styles/sideBar/route.module.css";
 
 import { categories } from "@/constants/const";
 
-const SideBar = () => {
+interface SideBarProps {
+  display: boolean;
+  setDisplay: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SideBar = ({ display, setDisplay }: SideBarProps) => {
+  const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
+    if (window.innerWidth <= 768) {
+      const target = e.target as HTMLElement;
+
+      if (target.closest("a")) {
+        setDisplay(false);
+        document.body.style.overflow = "auto";
+      }
+    }
+  };
   return (
-    <aside className={styles.aside}>
+    <aside className={(display && styles.show) || styles.aside}>
       <p>
         <FaFilter className="text-orange-500" />
         دسته بندی
       </p>
-      <Link href={"/buy-residential"}>همه</Link>
-      {Object.keys(categories).map((item, index) => (
-        <Link
-          key={index}
-          href={{
-            pathname: "/buy-residential",
-            query: { category: item },
-          }}
-        >
-          {categories[item]}
-        </Link>
-      ))}
+      <div className={"flex flex-col"} onClick={clickHandler}>
+        <Link href={"/buy-residential"}>همه</Link>
+        {Object.keys(categories).map((item, index) => (
+          <Link
+            key={index}
+            href={{
+              pathname: "/buy-residential",
+              query: { category: item },
+            }}
+          >
+            {categories[item]}
+          </Link>
+        ))}
+      </div>
     </aside>
   );
 };

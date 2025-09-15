@@ -188,7 +188,7 @@ export const PATCH = async (req: Request) => {
 export const GET = async (req: Request) => {
   try {
     await connectDb();
-    const profile = await Profile.find().select("-userId");
+    const profile = await Profile.find({ published: true }).select("-userId");
     return NextResponse.json({ status: "Success", profile });
   } catch {
     NextResponse.json(

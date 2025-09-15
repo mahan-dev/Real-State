@@ -1,20 +1,39 @@
-
-.container{
-    @apply flex  justify-between mt-32 ;
+.container {
+    @apply flex justify-between mt-32;
 }
 
-.aside{ 
-    @apply h-fit flex-shrink-0 ml-10 rounded-md p-2 ;
-     box-shadow:0 0 12px rgba(244, 125, 21, 0.4);
-     a {
+.aside {
+    @apply h-fit flex-shrink-0 ml-10 rounded-md p-2 max-md:hidden;
+    box-shadow: 0 0 12px rgba(244, 125, 21, 0.4);
+
+    a {
         @apply text-gray-600 mt-1;
-     }
+    }
+}
+
+.show {
+    @apply fixed top-0 left-0 w-full h-full  flex flex-col justify-center items-center  backdrop-blur-sm bg-opacity-50 z-10;
+}
+
+.main, .main-element {
+    @apply max-md:place-content-center;
 }
 
 .main {
-    @apply w-full mt-2 flex flex-wrap gap-3 max-[1006px]:justify-center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    @apply w-full mt-2 grid gap-3;
 }
 
-.notfound{
-    @apply h-fit text-red-500 p-2 bg-red-500 bg-opacity-30 rounded-lg;
+.main-element {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    @apply w-full grid place-content-center mt-2 gap-3;
 }
+
+.notfound {
+    @apply w-full text-center h-fit text-red-500 p-2 bg-red-500 bg-opacity-30 rounded-lg;
+}
+
+
+.filterIcon {
+    @apply fixed bottom-4 right-4 bg-orange-500 text-white p-3 rounded-full text-[1.8rem] shadow-lg cursor-pointer z-10 md:hidden;
+}   

@@ -14,7 +14,6 @@ interface CardProps {
 
 const Card = ({ data }: CardProps) => {
   const { _id, title, category, location, price } = data;
-  console.log(_id);
 
   return (
     <section className={styles.container}>

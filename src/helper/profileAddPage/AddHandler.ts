@@ -13,20 +13,30 @@ interface AddInterface {
   reset: UseFormReset<FormValues>;
 }
 
-
 export const AddHandler = async (
   formData: FormValues,
   { setError, reset, setLoading }: AddInterface
 ) => {
-  
   const phoneNumber = +formData.phone;
   const price = +formData.price;
+  const amenities = formData.amenities;
+  const rules = formData.rules;
 
   if (isNaN(phoneNumber)) {
     toast.error(" شماره تماس باید عدد باشد", { duration: 1500 });
     return;
   } else if (isNaN(price)) {
     toast.error("قیمت باید عدد باشد");
+    return;
+  }
+
+  const quantities = [amenities, rules];
+  const isEmpty = quantities.some((item) =>
+    item.some((quantity) => quantity.trim() === "")
+  );
+
+  if (isEmpty) {
+    toast.error("فیلد هارا پر کنید", { duration: 1500 });
     return;
   }
 
@@ -38,7 +48,7 @@ export const AddHandler = async (
     );
     if (data.message) {
       toast.success(data.message);
-      setError(false)
+      setError(false);
       reset();
     }
   } catch (error) {

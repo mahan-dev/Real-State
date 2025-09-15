@@ -1,7 +1,18 @@
-.aside{
+.aside {
     @apply flex flex-col px-6 py-2;
+
     p {
         @apply flex gap-2 justify-center items-center;
-        
+
+    }
+}
+
+.show {
+    box-shadow: 0 0 12px rgb(0, 0, 0, 0.1);
+    @apply flex flex-col h-fit px-8 py-2 rounded-md bg-white z-10;
+
+    p {
+        @apply flex gap-2 justify-center items-center;
+
     }
 }

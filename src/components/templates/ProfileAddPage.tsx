@@ -15,12 +15,12 @@ import Loader from "@/modules/Loader";
 import { EditHandler } from "@/helper/profileAddPage/EditHandler";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { TextInputProps } from "@/constants/textInput";
 
 interface ProfileProps {
   data?: FormValues;
 }
 const ProfileAddPage = ({ data }: ProfileProps) => {
-  
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -41,46 +41,6 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
     });
 
   const profileData = watch();
-
-  const inputProps = [
-    {
-      title: "عنوان آگهی",
-      name: "title",
-      profileData: profileData,
-      setValue: setValue,
-    },
-    {
-      title: "توضیحات",
-      name: "description",
-      profileData: profileData,
-      setValue: setValue,
-      textarea: true,
-    },
-    {
-      title: "آدرس",
-      name: "location",
-      profileData: profileData,
-      setValue: setValue,
-    },
-    {
-      title: "شماره تماس",
-      name: "phone",
-      profileData: profileData,
-      setValue: setValue,
-    },
-    {
-      title: "قیمت (تومان)",
-      name: "price",
-      profileData: profileData,
-      setValue: setValue,
-    },
-    {
-      title: "بنگاه",
-      name: "realState",
-      profileData: profileData,
-      setValue: setValue,
-    },
-  ];
 
   const dataValidation = () => {
     if (data) {
@@ -113,19 +73,22 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
     else if (data) EditHandler({ formData, setLoading, router });
   };
 
+
+ 
+
   return (
     <section className="">
       <h2 className={styles.title}>{data ? "ویرایش آگهی" : "ثبت آگهی"}</h2>
 
       <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
-        {inputProps.map((item) => (
+        {TextInputProps.map(({title, name, textarea}) => (
           <TextInput
-            key={item.name}
-            profileData={item.profileData}
-            title={item.title}
-            name={item.name}
-            setValue={item.setValue}
-            textarea={item.textarea}
+            key={name}
+            profileData={profileData}
+            title={title}
+            name={name}
+            setValue={setValue}
+            textarea={textarea}
             setError={setError}
             error={error}
           />

@@ -14,7 +14,7 @@ const MyProfilesPage = ({ profileData }: Profile) => {
     <>
       {userProfile?.length > 0 ? "" : <p className="text-center my-2">آگهی پیدا نشده است 🙁</p>}
 
-      <div className={styles.container}>
+      <div className={userProfile.length <= 2 ? styles["container-element"] : styles.container}>
         {userProfile?.map((item) => (
           <DashboardCard key={item._id} data={JSON.parse(JSON.stringify(item))} />
         ))}

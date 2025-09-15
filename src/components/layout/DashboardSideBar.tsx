@@ -7,16 +7,26 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import LogOutButton from "@/elements/LogOutButton";
 import SideBar from "@/components/modules/MenuBar";
 
-const DashboardSideBar = async ({ children }) => {
+interface DashboardSideBarProps {
+  children: React.ReactNode;
+  role: string;
+  email: string;
+}
+
+const DashboardSideBar = async ({
+  children,
+  role,
+  email,
+}: DashboardSideBarProps) => {
   const session = await getServerSession(authOptions);
-  const email = session?.user.email;
+  const userEmail = session?.user.email;
 
   return (
     <section className={styles.container}>
       <div className={styles.sidebar}>
         <div className={styles.sidebar__header}>
           <CgProfile />
-          <p className="break-all">{email ? email : "nothing found"}</p>
+          <p className="break-all">{userEmail ? userEmail : "nothing found"}</p>
         </div>
 
         <div className={styles.sidebar__main}>
