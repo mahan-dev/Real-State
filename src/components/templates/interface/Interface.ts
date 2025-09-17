@@ -23,6 +23,7 @@ export interface ProfileResponse extends FormValues {
   userId?: string;
   createdAt: string;
   updatedAt: string;
+  status:number;
   message: string;
   error: string;
 }

@@ -18,8 +18,11 @@ const CategoryCard = ({ data }: CategoryCardProps) => {
               className={styles.categoryList__image}
               alt={item}
               src={`/images/${item}.png`}
-              width={240}
-              height={144}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: '100%', height: 'auto' }}
+              priority
             />
             <p className="text-center my-3">{categories[item]}</p>
           </Link>

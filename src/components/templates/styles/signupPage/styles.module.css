@@ -7,7 +7,7 @@
 }
 
 .container__form {
-    @apply flex flex-col w-[350px] mt-5 py-6 px-12 border-2 border-orange-400 rounded-md;
+    @apply flex flex-col w-[300px] mt-5 py-8 px-8 border-2 border-orange-400 rounded-md;
 
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
     

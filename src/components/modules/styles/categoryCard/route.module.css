@@ -8,5 +8,5 @@
 }
 
 .categoryList__image{
-    @apply rounded-xl;
+    @apply object-cover rounded-xl;
 }
