@@ -74,7 +74,7 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
   };
 
   return (
-    <section className="">
+    <section className="mb-32">
       <h2 className={styles.title}>{data ? "ویرایش آگهی" : "ثبت آگهی"}</h2>
 
       <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>

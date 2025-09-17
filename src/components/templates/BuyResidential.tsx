@@ -27,7 +27,7 @@ const BuyResidentialPage = ({ data }: ResidentialProps) => {
       </div>
       <div
         className={
-          data.length <= 2 ? styles.main : styles["styles.main-element"]
+          data.length <= 2 ? styles["styles.main-element"] : styles.main
         }
       >
         {data.length ? null : (

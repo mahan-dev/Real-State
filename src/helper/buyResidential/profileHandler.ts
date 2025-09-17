@@ -3,8 +3,7 @@ import Profile from "@/models/Profile";
 
 export const profileHandler = async (): Promise<ProfileTypes[]> => {
   try {
-    const profile = await Profile.find()
-      .select("-userId");
+    const profile = await Profile.find({ published: true }).select("-userId");
     return profile;
   } catch {
     return [];

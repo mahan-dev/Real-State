@@ -8,7 +8,7 @@ import styles from "@/components/layout/styles/dashboard-sidebar/route.module.cs
 
 interface SideBarProps {
   setIsMenu?: React.Dispatch<React.SetStateAction<boolean>>;
-  role: string;
+  role?: string;
 }
 
 const SideBar = ({ setIsMenu, role }: SideBarProps) => {

@@ -10,11 +10,11 @@ const AdminPage = ({ profile }: AdminProps) => {
   return (
     <div>
       {!profile.length && (
-        <h2 className="text-center mt-4"> هیچ آگهی در انتظار تایید نیست</h2>
+        <h2 className="text-center text-red-500 bg-red-200 rounded-md  mt-4 py-1"> هیچ آگهی در انتظار تایید نیست</h2>
       )}
 
       {profile.map((item) => (
-        <AdminCard key={item._id} data={item} />
+        <AdminCard key={item._id} data={JSON.parse(JSON.stringify(item))} />
       ))}
     </div>
   );
