@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "@/templates/styles/dashboardPage/route.module.css";
 import toast from "react-hot-toast";
 
@@ -10,14 +10,14 @@ interface DashboardProps {
 const DashboardPage = ({ createdAt }: DashboardProps) => {
   const date = new Date(createdAt).toLocaleDateString("fa-IR");
 
-  const dateHandler = () => {
+  const dateHandler = useCallback(() => {
     if (date !== "Invalid Date") return;
     toast.error("مشکلی پیش آمده!");
-  };
+  }, [date]);
 
   useEffect(() => {
     dateHandler();
-  }, []);
+  }, [dateHandler]);
 
   return (
     <section>

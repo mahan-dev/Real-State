@@ -8,7 +8,7 @@ import RadioButton from "@/modules/RadioButton";
 import TextList from "@/modules/TextList";
 import Button from "@mui/material/Button";
 import CustomDatePicker from "../modules/CustomDatePicker";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AddHandler } from "@/helper/profileAddPage/AddHandler";
 import Loader from "@/modules/Loader";
 
@@ -42,7 +42,7 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
 
   const profileData = watch();
 
-  const dataValidation = () => {
+  const dataValidation = useCallback(() => {
     if (data) {
       reset({
         title: data.title,
@@ -60,11 +60,12 @@ const ProfileAddPage = ({ data }: ProfileProps) => {
         _id: data._id,
       });
     }
-  };
+  }, [data, reset]);
+
   useEffect(() => {
     if (!data) return;
     dataValidation();
-  }, [data, reset]);
+  }, [data, dataValidation]);
 
   const router: AppRouterInstance = useRouter();
 

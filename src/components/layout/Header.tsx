@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import styles from "@/components/layout/styles/header/route.module.css";
 import { useSession } from "next-auth/react";
@@ -16,21 +16,22 @@ const Header = () => {
 
   const { data } = useSession();
 
-  const handleClick = () => {
-    const clickOutside = (e: MouseEvent) => {
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!isMenu) return;
       if (ref.current.contains(target) || iconRef.current.contains(target))
         return;
       setIsMenu(false);
       document.body.style.overflow = "auto";
-    };
 
-    document.addEventListener("click", clickOutside);
-    return () => {
-      document.removeEventListener("click", clickOutside);
-    };
-  };
+      document.addEventListener("click", handleClick);
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    },
+    [isMenu]
+  );
 
   const toggleHandler = () => {
     setIsMenu(true);
@@ -38,8 +39,11 @@ const Header = () => {
   };
 
   useEffect(() => {
-    handleClick();
-  }, [isMenu]);
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, [handleClick]);
 
   return (
     <header className={styles.header}>

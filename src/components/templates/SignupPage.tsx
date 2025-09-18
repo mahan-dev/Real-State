@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "@/templates/styles/signupPage/styles.module.css";
 import SignupValidation from "@/helper/signupPage/SignupHandler";
 import Form from "@/modules/Form";
@@ -37,13 +37,13 @@ const SignupPage = ({ error }: SignupProps) => {
     if (res) router.push("/signin");
   };
 
-  const connectionErrorHandler = () => {
+  const connectionErrorHandler = useCallback(() => {
     if (error) toast.error(error, { duration: 2000 });
-  };
+  }, [error]);
 
   useEffect(() => {
     connectionErrorHandler();
-  }, []);
+  }, [connectionErrorHandler]);
 
   return (
     <section className={styles.container}>

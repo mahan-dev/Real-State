@@ -1,12 +1,20 @@
-import connectDb from "@/utils/connectDb";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
-import React from "react";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+
+import connectDb from "@/utils/connectDb";
 import User from "@/models/User";
+import Profile from "@/models/Profile";
+
 import DashboardSideBar from "@/components/layout/DashboardSideBar";
 import AdminPage from "@/components/templates/AdminPage";
-import Profile from "@/models/Profile";
+
+export const metadata: Metadata = {
+  title: "پنل ادمبن | پروژه املاک",
+  description: "Sell buildings",
+  icons: { icon: "./favicon.ico" },
+};
 
 const Admin = async () => {
   await connectDb();

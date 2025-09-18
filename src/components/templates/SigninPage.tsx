@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "@/templates/styles/signupPage/styles.module.css";
 import Form from "@/modules/Form";
 import { FormData } from "@/templates/interface/Interface";
@@ -27,13 +27,13 @@ const SigninPage = ({ error }: SigninProps) => {
     if (res) router.push("/dashboard");
   };
 
-  const connectionErrorHandler = () => {
+  const connectionErrorHandler = useCallback( () => {
     if (error) toast.error(error, { duration: 2000 });
-  };
+  }, [error]);
 
   useEffect(() => {
     connectionErrorHandler();
-  }, []);
+  }, [connectionErrorHandler]);
 
   return (
     <section className={styles.container}>

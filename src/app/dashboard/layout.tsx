@@ -1,4 +1,6 @@
 import React, { PropsWithChildren } from "react";
+import { Metadata } from "next";
+
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
@@ -7,11 +9,17 @@ import DashboardSideBar from "@/components/layout/DashboardSideBar";
 import User from "@/models/User";
 import connectDb from "@/utils/connectDb";
 
+export const metadata: Metadata = {
+  title: " پنل کاربری  | پروژه املاک ",
+  description: "Sell buildings",
+  icons: { icon: "./favicon.ico" },
+};
+
 const DashboardLayout = async ({ children }: PropsWithChildren) => {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/signup");
 
-  await connectDb()
+  await connectDb();
   const user = await User.findOne({ email: session.user.email });
   if (!user) return <h3>مشکلی پیش آمده است</h3>;
 

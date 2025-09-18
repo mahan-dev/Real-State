@@ -7,8 +7,9 @@ import React, { PropsWithChildren } from "react";
 import Providers from "@/providers/Providers";
 
 export const metadata: Metadata = {
-  title: "Real-State",
+  title: "پروژه املاک",
   description: "Sell buildings",
+  icons: {icon:"./favicon.ico"}
 };
 
 type LayoutProps = Readonly<PropsWithChildren>;
@@ -17,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="fa" dir="rtl">
       <body className={myFont.className}>
         <section className="max-w-[1200px] mx-auto  py-3 max-xl:px-3">
-          <Providers>                 
+          <Providers>
             <Layout>{children}</Layout>
           </Providers>
         </section>

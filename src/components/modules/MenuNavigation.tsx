@@ -17,8 +17,13 @@ const MenuNavigation = ({ ref, isMenu, setIsMenu }: MenuProps) => {
   };
 
   const roleFetcher = async () => {
-    const { data } = await axios<ResponseData>("/api/admin/");
-    setRole(data.data);
+    try {
+
+      const { data } = await axios<ResponseData>("/api/admin/");
+      setRole(data.data);
+    } catch{
+      console.log("مشکلی رخ داده")
+    }
   };
 
   useEffect(() => {
