@@ -25,13 +25,9 @@ const BuyResidentialPage = ({ data }: ResidentialProps) => {
       <div className={(display && styles.show) || styles.aside}>
         <SideBar display={display} setDisplay={setDisplay} />
       </div>
-      <div
-        className={
-          data.length <= 2 ? styles["styles.main-element"] : styles.main
-        }
-      >
+      <div className={data.length <= 2 ? styles["main-element"] : styles.main}>
         {data.length ? null : (
-          <div className=" w-full flex justify-center">
+          <div className=" w-full absolute">
             <h2 className={styles.notfound}> هیچ آگهی ثبت نشده </h2>
           </div>
         )}

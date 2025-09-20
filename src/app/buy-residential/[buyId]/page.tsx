@@ -1,6 +1,6 @@
-import DetailsPage from "@/components/templates/DetailsPage";
-import Profile from "@/models/Profile";
 import connectDb from "@/utils/connectDb";
+import Profile from "@/models/Profile";
+import DetailsPage from "@/components/templates/DetailsPage";
 
 interface PageProps {
   params: Promise<{ buyId: string }>;
@@ -22,10 +22,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
   await connectDb();
   const profile = await Profile.findOne({ _id });
 
-  const { title, description } = profile;
+  const { metaData } = profile;
 
-  return {
-    title,
-    description,
-  };
+  return metaData
 };

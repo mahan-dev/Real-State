@@ -1,5 +1,5 @@
 .container {
-    @apply flex justify-between mt-32;
+    @apply flex mt-32;
 }
 
 .aside {
@@ -16,21 +16,21 @@
 }
 
 .main, .main-element {
-    @apply max-md:place-content-center;
+    @apply relative  max-md:place-content-center;
 }
 
 .main {
     grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
-    @apply w-full mt-2 grid gap-3;
+    @apply  relative w-full mt-2 grid place-content-center gap-3 ;
 }
 
 .main-element {
     grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
-    @apply w-full grid place-content-center mt-2 gap-3;
+    @apply w-full grid mt-2 gap-3;
 }
 
 .notfound {
-    @apply w-full text-center h-fit text-red-500 p-2 bg-red-500 bg-opacity-30 rounded-lg;
+    @apply w-full  text-center h-fit text-red-500 p-2 bg-red-500 bg-opacity-30 rounded-lg;
 }
 
 

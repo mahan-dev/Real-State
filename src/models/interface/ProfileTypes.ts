@@ -16,4 +16,8 @@ export interface ProfileTypes extends Document {
   createdAt: Date;
   updatedAt: Date;
   published: boolean;
+  metaData: {
+    title: string;
+    description: string;
+  };
 }

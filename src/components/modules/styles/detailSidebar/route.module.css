@@ -2,7 +2,7 @@
 
     box-shadow: 0 0 12px rgba(244, 125, 21, 0.4);
 
-    @apply w-full h-fit text-[1rem] py-4 flex flex-col gap-2 items-center rounded-md;
+    @apply text-[1rem] py-4 flex flex-col gap-2 items-center rounded-md overflow-hidden max-md:w-[140px] max-md:px-8;
 
     span {
         @apply mt-2
@@ -24,7 +24,7 @@
 
 .realState__price {
     box-shadow: 0 0 12px rgba(244, 125, 21, 0.4);
-    @apply text-[0.9rem] text-gray-500 px-2 py-4 flex flex-col gap-3 items-center rounded-md;
+    @apply text-[0.9rem] text-gray-500 px-2 py-4 flex flex-col gap-3 items-center rounded-md max-md:w-[140px] max-md:px-6 ;
 
     svg {
         @apply text-[1.6rem] text-orange-500;

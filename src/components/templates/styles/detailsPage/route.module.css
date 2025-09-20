@@ -1,9 +1,9 @@
 .container {
-    @apply flex gap-8 mt-12;
+    @apply flex gap-8 mt-12 mb-24 max-md:flex-col-reverse;
 }
 
 .main {
-    @apply w-[85%];
+    @apply w-full;
 }
 
 .main__location {
@@ -19,5 +19,5 @@
 }
 
 .aside {
-    @apply w-[15%] flex flex-col gap-4 ;
+    @apply w-[160px] flex shrink-0 flex-col gap-4 max-md:w-full max-md:flex-row max-md:justify-center max-md:flex-wrap;
 }

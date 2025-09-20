@@ -17,7 +17,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="fa" dir="rtl">
       <body className={myFont.className}>
-        <section className="max-w-[1200px] mx-auto  py-3 max-xl:px-3">
+        <section className="max-w-[1200px] mx-auto  py-3 max-xl:px-5">
           <Providers>
             <Layout>{children}</Layout>
           </Providers>

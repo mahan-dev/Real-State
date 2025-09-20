@@ -2,7 +2,7 @@
 
 .container{
     box-shadow: 0 0 12px rgba(244, 125, 21, 0.4);
-    @apply text-gray-600 flex justify-center items-center gap-2  p-2 rounded-md cursor-pointer transition-all duration-150 ease-linear hover:text-orange-500;
+    @apply text-gray-600 flex justify-center items-center gap-2  p-2 rounded-md cursor-pointer transition-all duration-150 ease-linear hover:text-orange-500 max-md:order-1 max-md:self-end;
     svg{
         @apply text-[1.2rem] text-orange-500;
     }

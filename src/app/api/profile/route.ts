@@ -67,6 +67,10 @@ export const POST = async (req: Request) => {
       rules,
       amenities,
       userId: new Types.ObjectId(user._id as string),
+      metaData: {
+        title,
+        description,
+      },
     });
 
     return NextResponse.json(

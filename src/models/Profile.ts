@@ -50,7 +50,11 @@ const ProfileSchema = new Schema<ProfileTypes>(
     },
     published: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+    metaData: {
+      title: String,
+      description: String,
     },
   },
   {
