@@ -1,7 +1,7 @@
 import React from "react";
 
 import connectDb from "@/utils/connectDb";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/helper/authOptions/route";
 import { getServerSession } from "next-auth";
 
 import MyProfilesPage from "@/components/templates/MyProfilesPage";

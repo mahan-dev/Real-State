@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/helper/authOptions/route";
 import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDb from "@/utils/connectDb";
@@ -29,7 +29,6 @@ export const DELETE = async () => {
     );
 
   await Profile.deleteOne({ userId: user._id });
-
 
   return NextResponse.json(
     {

@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
 import connectDb from "@/utils/connectDb";
@@ -9,6 +8,7 @@ import Profile from "@/models/Profile";
 
 import DashboardSideBar from "@/components/layout/DashboardSideBar";
 import AdminPage from "@/components/templates/AdminPage";
+import { authOptions } from "@/helper/authOptions/route";
 
 export const metadata: Metadata = {
   title: "پنل ادمبن | پروژه املاک",

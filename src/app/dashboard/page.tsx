@@ -1,10 +1,11 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+
 
 import connectDb from "@/utils/connectDb";
 import User from "@/models/User";
 
 import DashboardPage from "@/components/templates/DashboardPage";
+import { authOptions } from "@/helper/authOptions/route";
 
 const page = async () => {
   await connectDb();

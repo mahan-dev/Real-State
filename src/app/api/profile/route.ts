@@ -1,10 +1,10 @@
 import connectDb from "@/utils/connectDb";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { NextResponse } from "next/server";
 import User from "@/models/User";
 import Profile from "@/models/Profile";
 import { Types } from "mongoose";
+import { authOptions } from "@/helper/authOptions/route";
 
 export const POST = async (req: Request) => {
   try {

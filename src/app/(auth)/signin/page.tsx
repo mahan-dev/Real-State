@@ -1,7 +1,7 @@
 import React from "react";
 
 import SigninPage from "@/components/templates/SigninPage";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/helper/authOptions/route";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import connectDb from "@/utils/connectDb";

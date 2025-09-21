@@ -2,12 +2,12 @@ import React, { PropsWithChildren } from "react";
 import { Metadata } from "next";
 
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
 import DashboardSideBar from "@/components/layout/DashboardSideBar";
 import User from "@/models/User";
 import connectDb from "@/utils/connectDb";
+import { authOptions } from "@/helper/authOptions/route";
 
 export const metadata: Metadata = {
   title: " پنل کاربری  | پروژه املاک ",
