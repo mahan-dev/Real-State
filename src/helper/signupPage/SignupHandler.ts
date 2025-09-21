@@ -31,7 +31,6 @@ const SignupValidation = async ({
   setIsLoading(true);
   try {
     const res = await axios.post<FormData>("api/signup", form);
-    const data = res.data;
     if (res.status === 201) {
       toast.success("حساب کاربری ایجاد شد");
       setForm({

@@ -14,7 +14,6 @@ const DetailsPage = ({ data }: ProfileDoc) => {
     amenities,
     rules,
     phone,
-    realState,
     price,
     category,
     constructionDate,

@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "@/templates/styles/signupPage/styles.module.css";
 import { FormData } from "@/templates/interface/Interface";
-import { ThreeDots } from "react-loader-spinner";
-import { getServerSession } from "next-auth";
 import Loader from "@/modules/Loader";
 
 interface FormInputProps {

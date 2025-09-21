@@ -5,7 +5,7 @@ import Link from "next/link";
 import { categories } from "@/constants/const";
 
 interface CategoryCardProps {
-  data: { [key: string]: string }[];
+  data: { [key: string]: string };
 }
 
 const CategoryCard = ({ data }: CategoryCardProps) => {

@@ -3,25 +3,30 @@
 import React, { useEffect, useState } from "react";
 
 import { PiShareNetworkFill } from "react-icons/pi";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
 import styles from "@/elements/styles/shareButton/route.module.css";
+import toast from "react-hot-toast";
 
 const ShareButton = () => {
   const [url, setUrl] = useState<string>("");
 
+  const copyHandler = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success("کپی شد");
+    } catch {
+      console.log("error");
+    }
+  };
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
 
   return (
     <>
-      <CopyToClipboard text={url}>
-        <div className={styles.container}>
-          <PiShareNetworkFill />
-          اشتراک گذاری
-        </div>
-      </CopyToClipboard>
+      <div className={styles.container} onClick={copyHandler}>
+        <PiShareNetworkFill />
+        اشتراک گذاری
+      </div>
     </>
   );
 };

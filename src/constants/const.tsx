@@ -29,4 +29,4 @@ export const icons = {
   villa: <AiOutlineHome />,
 };
 
-export { services, cities, categoryCard, categories };
+export { services, cities, categories };

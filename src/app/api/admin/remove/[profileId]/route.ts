@@ -5,7 +5,7 @@ import connectDb from "@/utils/connectDb";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-export const DELETE = async (req: Response) => {
+export const DELETE = async () => {
   await connectDb();
 
   const session = await getServerSession(authOptions);

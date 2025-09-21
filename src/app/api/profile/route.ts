@@ -189,7 +189,7 @@ export const PATCH = async (req: Request) => {
   }
 };
 
-export const GET = async (req: Request) => {
+export const GET = async () => {
   try {
     await connectDb();
     const profile = await Profile.find({ published: true }).select("-userId");
