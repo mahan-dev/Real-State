@@ -4,7 +4,7 @@ import connectDb from "@/utils/connectDb";
 import React from "react";
 
 interface BuyResidentialProps {
-  searchParams: { category: string };
+  searchParams: Promise<{ category: string }> ;
 }
 
 const BuyResidential = async ({ searchParams }: BuyResidentialProps) => {
