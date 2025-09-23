@@ -1,6 +1,6 @@
 .container {
     grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
-    @apply grid place-content-center gap-4 mt-2;
+    @apply grid place-content-center gap-4 mt-2 max-sm:mb-24;
 
 }
 
