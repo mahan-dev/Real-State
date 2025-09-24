@@ -8,9 +8,16 @@
     }
 }
 
+.icon-wrapper {
+    @apply flex justify-between;
+}
 .icon  {
     @apply w-fit px-1 py-1 text-[1.3rem] text-orange-500 bg-orange-500 bg-opacity-20 rounded-md;
 
+}
+
+.status {
+    @apply text-[0.8rem] bg-red-500 text-white rounded-md px-2 py-1;
 }
 
 .title {

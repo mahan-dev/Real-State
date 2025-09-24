@@ -1,13 +1,10 @@
 import axios from "axios";
-import React, { SetStateAction } from "react";
 
-interface residentialProps {
-  setCounter: React.Dispatch<SetStateAction<number>>;
-}
-export const residentialHandler = async ({ setCounter }: residentialProps) => {
+export const residentialHandler = async () => {
   try {
-    const { data } = await axios("api/total-residential-number");
-    setCounter(data.data as number);
+    const { data } = await axios("api/profile");
+    console.log(data)
+    return  data.profileLength.length;
   } catch {
     console.log("error");
   }

@@ -5,7 +5,6 @@ interface ItemProps {
   data: string[];
 }
 const ItemList = ({ data }: ItemProps) => {
-  console.log(data);
   return (
     <>
       {data.length ? (

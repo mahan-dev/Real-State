@@ -13,12 +13,25 @@ interface CardProps {
 }
 
 const Card = ({ data }: CardProps) => {
-  const { _id, title, category, location, price } = data;
+  const { _id, title, category, location, price, published } = data;
+  
 
   return (
     <section className={styles.container}>
-      <div className={styles.icon}>{icons[category]}</div>
+      <div className={styles["icon-wrapper"]}>
+        <div className={styles.icon}>
+
+        {icons[category]}
+        </div>
+        {!published && 
+        <span className={styles.status}>
+          منتشر نشده
+        </span>
+        }
+
+      </div>
       <p className={styles.title}>{title}</p>
+      
       <div className={styles.location}>
         <TiLocation />
         {location}

@@ -53,7 +53,6 @@ export const PATCH = async (req: Request, context: RouteContext) => {
       { status: 200 }
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       {
         status: "Failed",

@@ -19,8 +19,9 @@ const DashboardPage = ({ createdAt }: DashboardProps) => {
     toast.error("مشکلی پیش آمده!");
   }, [date]);
 
-  const resLength = useCallback(() => {
-    residentialHandler({ setCounter });
+  const resLength = useCallback(async () => {
+    const res = await residentialHandler();
+    setCounter(res);
   }, []);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const DashboardPage = ({ createdAt }: DashboardProps) => {
 
       <div className="flex mt-5">
         <p className="flex text-orange-500 me-2">تعداد آگهی های منتشر شده</p>
-        <span>{count ? count : <Loader loader={true} />}</span>
+        <span>{count >= 0 ? count : <Loader loader={true} />}</span>
       </div>
 
       <div className={styles.date}>

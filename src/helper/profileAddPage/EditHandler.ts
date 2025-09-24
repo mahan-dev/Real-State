@@ -24,7 +24,7 @@ export const EditHandler = async ({
 }: EditProps) => {
   try {
     setLoading(true);
-    const res = await axios.patch<ResponseProps>("/api/profilez", formData);
+    const res = await axios.patch<ResponseProps>("/api/profile", formData);
 
     const success = res.status === 200;
     if (success) {
@@ -33,7 +33,6 @@ export const EditHandler = async ({
       router.push("/dashboard/my-profiles");
     }
   } catch (error) {
-    console.log(error);
     const { data } = error?.response;
     const message = data.error || "مشکلی رخ داده است"
     toast.error(message, { duration: 2000 });

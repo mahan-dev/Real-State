@@ -1,34 +1,26 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import SideBar from "@/components/modules/MenuBar";
 import styles from "@/modules/styles/menuNavigation/route.module.css";
 import LogOutButton from "@/elements/LogOutButton";
-import axios from "axios";
-import { MenuProps, ResponseData } from "./interface/route";
-
-
+import { MenuProps } from "@/modules/interface/route";
+import { useSession } from "next-auth/react";
+import { roleFetcher } from "@/helper/menuNavigation/navigationHandler";
 
 const MenuNavigation = ({ ref, isMenu, setIsMenu }: MenuProps) => {
   const [role, setRole] = useState<string>("");
+
+  const { data : session } = useSession();
 
   const closeHandler = () => {
     setIsMenu(false);
     document.body.style.overflow = "auto";
   };
 
-  const roleFetcher = async () => {
-    try {
-
-      const { data } = await axios<ResponseData>("/api/admin/");
-      setRole(data.data);
-    } catch{
-      console.log("مشکلی رخ داده")
-    }
-  };
-
   useEffect(() => {
-    roleFetcher();
-  }, []);
+    roleFetcher({ setRole, session });
+  }, [session]);
 
   return (
     <div

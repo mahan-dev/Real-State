@@ -139,7 +139,6 @@ export const PATCH = async (req: Request) => {
           status: 422,
         }
       );
-    console.log(_id);
 
     const profile = await Profile.findOne({ _id });
 
@@ -192,8 +191,27 @@ export const PATCH = async (req: Request) => {
 export const GET = async () => {
   try {
     await connectDb();
-    const profile = await Profile.find({ published: true }).select("-userId");
-    return NextResponse.json({ status: "Success", profile });
+    const session = await getServerSession(authOptions);
+    if (!session)
+      return NextResponse.json({
+        status: "Failed",
+        error: "لطفا وارد حساب کابری خود شوید",
+      });
+
+    const user = await User.findOne({ email: session.user.email });
+    if (!user)
+      return NextResponse.json(
+        { status: "Failed", error: " حساب کابری پیدانشد" },
+        { status: 404 }
+      );
+
+    const profile = await Profile.find({ userId: user._id }).select("-userId");
+
+    const profileLength = await Profile.find({ published: true }).select(
+      "-userId"
+    );
+
+    return NextResponse.json({ status: "Success", profile, profileLength });
   } catch {
     NextResponse.json(
       { status: "Failed", error: "مشکلی در سرور رخ داده است" },
