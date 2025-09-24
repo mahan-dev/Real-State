@@ -12,7 +12,6 @@ interface AdminProps {
 export const AdminDelete = async ({_id, router}:AdminProps) => {
   try {
     const res = await axios.delete<ProfileResponse>(`/api/admin/remove/${_id}`);
-    console.log(res);
     if (res.status === 200) {
       toast.success(res.data.message, { duration: 2000 });
       router.refresh();

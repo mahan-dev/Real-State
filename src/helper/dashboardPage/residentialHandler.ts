@@ -1,11 +1,17 @@
 import axios from "axios";
+import React, { SetStateAction } from "react";
 
-export const residentialHandler = async () => {
+interface residentialProps {
+  setLoading: React.Dispatch<SetStateAction<boolean>>;
+}
+export const residentialHandler = async ({ setLoading }: residentialProps) => {
   try {
+    setLoading(true);
     const { data } = await axios("api/profile");
-    console.log(data)
-    return  data.profileLength.length;
+    return data.profileLength.length;
   } catch {
     console.log("error");
+  } finally {
+    setLoading(false);
   }
 };
