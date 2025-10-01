@@ -1,34 +1,23 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "@/templates/styles/dashboardPage/route.module.css";
 import toast from "react-hot-toast";
-import { residentialHandler } from "@/helper/dashboardPage/residentialHandler";
-import Loader from "@/modules/Loader";
 
 interface DashboardProps {
   createdAt: string;
+  profileLength: number;
 }
 
-const DashboardPage = ({ createdAt }: DashboardProps) => {
-  const [count, setCounter] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
-
+const DashboardPage = ({ createdAt, profileLength }: DashboardProps) => {
   const date = new Date(createdAt).toLocaleDateString("fa-IR");
-
   const dateHandler = useCallback(() => {
     if (date !== "Invalid Date") return;
     toast.error("مشکلی پیش آمده!");
   }, [date]);
 
-  const resLength = useCallback(async () => {
-    const res = await residentialHandler({ setLoading });
-    setCounter(res);
-  }, []);
-
   useEffect(() => {
     dateHandler();
-    resLength();
-  }, [dateHandler, resLength]);
+  }, [dateHandler]);
 
   return (
     <section>
@@ -39,7 +28,7 @@ const DashboardPage = ({ createdAt }: DashboardProps) => {
 
       <div className="flex mt-5">
         <p className="flex text-orange-500 me-2">تعداد آگهی های منتشر شده</p>
-        <span>{loading ? <Loader loader={true} /> : count >= 0 && count}</span>
+        <span>{profileLength}</span>
       </div>
 
       <div className={styles.date}>

@@ -21,7 +21,7 @@ const DashboardLayout = async ({ children }: PropsWithChildren) => {
 
   await connectDb();
   const user = await User.findOne({ email: session.user.email });
-  if (!user) return <h3>مشکلی پیش آمده است</h3>;
+  if (!user) return <h3 className="bg-rose-200 text-red-600 rounded-md mt-4 text-center p-2" >مشکلی پیش آمده است</h3>;
 
   return (
     <DashboardSideBar role={user.role} email={user.email}>

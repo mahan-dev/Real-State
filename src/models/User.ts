@@ -36,5 +36,5 @@ export const userSchema = new Schema<UserInterface>({
 });
 
 const User: Model<UserInterface> =
-  models.RealStateDb || model<UserInterface>("RealStateDb", userSchema);
+  models?.RealStateDb || model<UserInterface>("RealStateDb", userSchema);
 export default User;

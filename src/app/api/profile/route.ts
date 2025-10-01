@@ -206,10 +206,12 @@ export const GET = async () => {
       );
 
     const profile = await Profile.find({ userId: user._id }).select("-userId");
+    console.log(profile)
 
     const profileLength = await Profile.find({ published: true }).select(
       "-userId"
     );
+    console.log(profileLength)
 
     return NextResponse.json({ status: "Success", profile, profileLength });
   } catch {
