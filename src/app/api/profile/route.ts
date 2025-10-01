@@ -187,37 +187,3 @@ export const PATCH = async (req: Request) => {
     );
   }
 };
-
-export const GET = async () => {
-  try {
-    await connectDb();
-    const session = await getServerSession(authOptions);
-    if (!session)
-      return NextResponse.json({
-        status: "Failed",
-        error: "لطفا وارد حساب کابری خود شوید",
-      });
-
-    const user = await User.findOne({ email: session.user.email });
-    if (!user)
-      return NextResponse.json(
-        { status: "Failed", error: " حساب کابری پیدانشد" },
-        { status: 404 }
-      );
-
-    const profile = await Profile.find({ userId: user._id }).select("-userId");
-    console.log(profile)
-
-    const profileLength = await Profile.find({ published: true }).select(
-      "-userId"
-    );
-    console.log(profileLength)
-
-    return NextResponse.json({ status: "Success", profile, profileLength });
-  } catch {
-    NextResponse.json(
-      { status: "Failed", error: "مشکلی در سرور رخ داده است" },
-      { status: 500 }
-    );
-  }
-};
