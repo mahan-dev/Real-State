@@ -1,3 +1,6 @@
+اکانت ادمین : admin@gma.com و رمز 123465
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
