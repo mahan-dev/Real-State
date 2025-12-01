@@ -6,10 +6,12 @@ import User from "@/models/User";
 import DashboardPage from "@/components/templates/DashboardPage";
 import { authOptions } from "@/helper/authOptions/route";
 import { userProfiles } from "@/helper/Dashboard-MyProfiles/UserProfiles";
+import { redirect } from "next/navigation";
 
 const page = async () => {
   await connectDb();
   const session = await getServerSession(authOptions);
+  if(!session) redirect("/signin")
   const [profileLength] = await userProfiles(session);
   const email = session?.user.email;
 

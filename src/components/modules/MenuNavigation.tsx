@@ -4,7 +4,7 @@ import { CgClose } from "react-icons/cg";
 import SideBar from "@/components/modules/MenuBar";
 import styles from "@/modules/styles/menuNavigation/route.module.css";
 import LogOutButton from "@/elements/LogOutButton";
-import { MenuProps } from "@/modules/interface/route";
+import { MenuProps } from "@/modules/interface/menuNavigation";
 import { useSession } from "next-auth/react";
 import { roleFetcher } from "@/helper/menuNavigation/navigationHandler";
 

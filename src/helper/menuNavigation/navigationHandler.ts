@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import axios from "axios";
 
-import { ResponseData } from "@/components/modules/interface/route";
+import { ResponseData } from "@/src/components/modules/interface/menuNavigation";
 import { Session } from "next-auth";
 
 interface roleInterface {

@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import styles from "@/components/layout/styles/header/route.module.css";
 import { useSession } from "next-auth/react";
 import { CgProfile } from "react-icons/cg";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import MenuNavigation from "@/components/modules/MenuNavigation";
+import { handleClick } from "@/helper/handleClick/handleClick";
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState<boolean>(false);
@@ -16,34 +17,21 @@ const Header = () => {
 
   const { data } = useSession();
 
-  const handleClick = useCallback(
-    (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!isMenu) return;
-      if (ref.current.contains(target) || iconRef.current.contains(target))
-        return;
-      setIsMenu(false);
-      document.body.style.overflow = "auto";
-
-      document.addEventListener("click", handleClick);
-      return () => {
-        document.removeEventListener("click", handleClick);
-      };
-    },
-    [isMenu]
-  );
-
   const toggleHandler = () => {
     setIsMenu(true);
     document.body.style.overflow = "hidden";
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClick);
+    document.addEventListener("click", (e: MouseEvent) =>
+      handleClick({ e, isMenu, setIsMenu, ref, iconRef })
+    );
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener("click", (e: MouseEvent) =>
+        handleClick({ e, isMenu, setIsMenu, ref, iconRef })
+      );
     };
-  }, [handleClick]);
+  }, [isMenu]);
 
   return (
     <header className={styles.header}>

@@ -1,7 +1,7 @@
 import React, { JSX } from "react";
 import styles from "@/templates/styles/homePage/route.module.css";
 
-import Services from "../modules/Services";
+import Services from "@/modules/Services";
 import CategoryCard from "@/modules/CategoryCard";
 import CityCard from "@/components/modules/CityCard";
 

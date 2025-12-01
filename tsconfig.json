@@ -18,19 +18,22 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
+    
     "paths": {
-      "@/*":["src/*"],
-      "@/public/*": ["public/*"],
-      "@/app/*": ["src/app/*"],
-      "@/templates/*": ["src/components/templates/*"],
-      "@/modules/*": ["src/components/modules/*"],
-      "@/models/*": ["src/models/*"],
-      "@/elements/*": ["src/components/elements/*"],
-      "@/api/*": ["src/app/api/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/helper/*": ["src/helper/*"],
-      "@/constants/*": ["src/constants/*"]
+      "@/*":["./*"],
+      "@/public/*": ["./public/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/templates/*": ["./src/components/templates/*"],
+      "@/providers/*": ["./src/providers/*"],
+      "@/modules/*": ["./src/components/modules/*"],
+      "@/models/*": ["./src/models/*"],
+      "@/elements/*": ["./src/components/elements/*"],
+      "@/api/*": ["./src/app/api/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/helper/*": ["./src/helper/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/theme/*": ["./src/theme/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js", "src/utils/auth.ts", "src/models/User.ts", "src/app/dashboard/my-profiles/[profileId]/page.tsx", "src/app/buy-residential/page.tsx", "src/constants/const.ts"],

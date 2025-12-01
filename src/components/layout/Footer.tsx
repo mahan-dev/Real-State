@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import styles from "@/components/layout/styles/footer/route.module.css";
 import Link from "next/link";
